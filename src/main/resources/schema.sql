@@ -24,15 +24,15 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE TABLE IF NOT EXISTS appointments (
-  id INT NOT NULL AUTO_INCREMENT,
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
   title varchar(255),
   date date NOT NULL,
   time time NOT NULL,
   notes varchar(600),
   client_id integer,
-  pet_id integer
+  pet_id integer,  
   FOREIGN KEY (client_id) REFERENCES clients(id)
   FOREIGN KEY (pet_id) REFERENCES pets(id)
-)
+);
 
 insert into users values (null, 'admin', 'password', 'SUPER_ADMIN');
