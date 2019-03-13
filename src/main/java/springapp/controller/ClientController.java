@@ -45,6 +45,7 @@ public class ClientController {
 	 public String listClients(Model model) {
         List<Client> clients = clientService.getClients();
 		model.addAttribute("clients", clients);
+		logger.info("hey");
         return "clients/listClients";
     }
 
