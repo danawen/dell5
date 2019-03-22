@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+<<<<<<< HEAD
 import springapp.command.AppointmentCommand;
+=======
+>>>>>>> 58a288b9a6d7ea6df4366f67026f3b60b14ceb79
 import springapp.command.ClientCommand;
 import springapp.domain.Appointment;
 import springapp.domain.Client;
@@ -53,6 +56,7 @@ public class AppointmentController {
         return "appointments/listAppointments";
     }
 
+<<<<<<< HEAD
 	 /**
      * Saves the updates to a client based on the command that was sent from the client side
      * @param command the command corresponding with how the client object should be updated/created
@@ -101,5 +105,9 @@ public class AppointmentController {
          // redirect to list appointment path/page
          return "redirect:/appointments";
     }
+=======
+
+   
+>>>>>>> 58a288b9a6d7ea6df4366f67026f3b60b14ceb79
 
 }
