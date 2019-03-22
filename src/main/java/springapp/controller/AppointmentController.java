@@ -15,15 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-<<<<<<< HEAD
 import springapp.command.AppointmentCommand;
-=======
-<<<<<<< HEAD
-import springapp.command.AppointmentCommand;
-=======
->>>>>>> 58a288b9a6d7ea6df4366f67026f3b60b14ceb79
->>>>>>> 36b9985c3d89468a8d8cc480245d31b73291d354
 import springapp.command.ClientCommand;
 import springapp.domain.Appointment;
 import springapp.domain.Client;
@@ -129,6 +121,7 @@ public class AppointmentController {
 
          // add an attribute to the list page, so a nice message can be shown
          redirectAttributes.addFlashAttribute("deleted", true);
+		 // test
 
          // redirect to list appointment path/page
          return "redirect:/appointments";
