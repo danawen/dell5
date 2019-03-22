@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<header th:replace="fragments/head.html :: head" >
+</header>
+<body>
+   
+      <div class="container-fluid cearfix" id="weekly_calendar">
+        <div class="columns clearfix">
+          <div class="hour-column clearfix">
+            <div class="headings">
+              <div class="empty heading"></div>
+            </div>
+            <div class="hour">
+              <div class="hours">                
+                <div class="hr">8 Am</div>
+                <div class="hr">9 Am</div>
+                <div class="hr">10 Am</div>
+                <div class="hr">11 Am</div>
+                <div class="hr">12 Pm</div>
+                <div class="hr">1 Pm</div>
+                <div class="hr">2 Pm</div>
+                <div class="hr">3 Pm</div>
+                <div class="hr">4 Pm</div>
+                <div class="hr">5 Pm</div>
+                <div class="hr">6 Pm</div>
+                <div class="hr">7 Pm</div>
+                <div class="hr">8 Pm</div>               
+              </div>
+            </div>
+          </div>
+      
+          <div class="event-column clearfix">
+            <header class="headings clearfix">
+              <div class="weekdays clearfix"></div>
+            </header>
+            <div class="week-grid clearfix">
+              <div class="hours-grid">
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('8')}" data-th-text="${TodayAppointments.get('8').getTitle()}"></span>
+                </div>                
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('9')}" data-th-text="${TodayAppointments.get('9').getTitle()}"></span>
+                </div>                
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('10')}" data-th-text="${TodayAppointments.get('10').getTitle()}"></span>
+                </div>
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('11')}" data-th-text="${TodayAppointments.get('11').getTitle()}"></span>
+                </div>
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('12')}" data-th-text="${TodayAppointments.get('12').getTitle()}"></span>
+                </div>
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('13')}" data-th-text="${TodayAppointments.get('13').getTitle()}"></span>
+                </div>
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('14')}" data-th-text="${TodayAppointments.get('14').getTitle()}"></span>
+                </div>
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('15')}" data-th-text="${TodayAppointments.get('15').getTitle()}"></span>
+                </div>
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('16')}" data-th-text="${TodayAppointments.get('16').getTitle()}"></span>
+                </div>
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('17')}" data-th-text="${TodayAppointments.get('17').getTitle()}"></span>
+                </div>
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('18')}" data-th-text="${TodayAppointments.get('18').getTitle()}"></span>
+                </div>
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('19')}" data-th-text="${TodayAppointments.get('19').getTitle()}"></span>
+                </div>
+                <div class="grid">
+                <span class="event" th:if="${TodayAppointments.containsKey('20')}" data-th-text="${TodayAppointments.get('20').getTitle()}"></span>
+                </div>               
+              </div>
+            </div>         
+          </div>      
+    </div>
+    </div>
+  </body>
+</html>
