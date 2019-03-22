@@ -2,6 +2,8 @@ package springapp.command;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import springapp.domain.Appointment;
 
@@ -14,8 +16,8 @@ public class AppointmentCommand {
 	private Integer id;
 	private String notes;
 	private String title;
-	private Time time;
-	private Date date;
+	private LocalTime time;
+	private LocalDate date;
 	private int petId;
 	private int clientId;
 
@@ -81,7 +83,7 @@ public class AppointmentCommand {
 	 * Set the time of the appointment
 	 * @param time the appointment address
 	 */
-	public void setTime(Time time) {
+	public void setTime(LocalTime time) {
 		this.time = time;
 	}
 
@@ -89,7 +91,7 @@ public class AppointmentCommand {
 	 * Set the date of the appointment
 	 * @param date of appointment
 	 */
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
@@ -105,11 +107,11 @@ public class AppointmentCommand {
 		return title;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public Time getTime() {
+	public LocalTime getTime() {
 		return time;
 	}
 

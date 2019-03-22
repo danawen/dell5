@@ -2,18 +2,20 @@ package springapp.domain;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 public class Appointment {	
 	private final Integer id;
 	private final String title;
-	private final Date date;
-	private final Time time;
+	private final LocalDate date;
+	private final LocalTime time;
 	private final String notes;
 	private final Integer petId;
 	private final Integer clientId;
 	
-	public Appointment(Integer id, String title, Date date, Time time, String notes, Integer petId, Integer clientId) {
+	public Appointment(Integer id, String title, LocalDate date, LocalTime time, String notes, Integer petId, Integer clientId) {
 		this.id = id;
 		this.title = title;
 		this.date = date;
@@ -31,11 +33,11 @@ public class Appointment {
 		return title;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public Time getTime() {
+	public LocalTime getTime() {
 		return time;
 	}
 
