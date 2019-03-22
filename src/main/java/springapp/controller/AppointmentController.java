@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import springapp.command.AppointmentCommand;
 import springapp.command.ClientCommand;
 import springapp.domain.Appointment;
 import springapp.domain.Client;
@@ -51,6 +52,31 @@ public class AppointmentController {
 		model.addAttribute("TodayAppointments",todaysAppointments);
         return "appointments/listAppointments";
     }
+	 
+	    /**
+	     * Generates the model for rendering the specific client page
+	     * @param id the id of the client we want to render, if the value is 'new' that is for creating a new client
+	     * @param model the model to populate for merging with the view
+	     * @return the client edit page template
+	     */
+		 @PreAuthorize("hasAuthority('GET_CLIENT')")
+		 @GetMapping("/{id}")
+		 public String getAppointment(@PathVariable("id") String id, Model model, boolean saved) {
+
+			 model.addAttribute("saved", saved);
+			
+		    if(id.equals("new")) {
+		        // create an empty command object to merge with the view template
+				model.addAttribute("command", new AppointmentCommand(null));	
+			} else {
+		        // since we have a valid id, get the client object from the service
+				Appointment appointment = appointmentService.getAppointment(id);
+				// we create a client command that can be used when the browser sends the save object
+				model.addAttribute("command", new AppointmentCommand(appointment));
+				
+			}
+			return "appointments/editAppointment";
+		}
 
 
    
