@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+<<<<<<< HEAD
+import springapp.command.AppointmentCommand;
+=======
+>>>>>>> 58a288b9a6d7ea6df4366f67026f3b60b14ceb79
 import springapp.command.ClientCommand;
 import springapp.domain.Appointment;
 import springapp.domain.Client;
@@ -52,7 +56,58 @@ public class AppointmentController {
         return "appointments/listAppointments";
     }
 
+<<<<<<< HEAD
+	 /**
+     * Saves the updates to a client based on the command that was sent from the client side
+     * @param command the command corresponding with how the client object should be updated/created
+     * @param redirectAttributes holds the attribtues that we may want to pass to the get page after a save
+     * @return the edit client view template
+     */
+	 @PreAuthorize("hasAuthority('SAVE_APPOINTMENT')")
+	 @PostMapping
+	 public String saveAppointment(AppointmentCommand command, RedirectAttributes redirectAttributes) {
+
+	     //NOTE: if we want to capture errors correctly, we would wrap the following code in a try/catch
+         // and the catch would add a nice error message to the mode
+         // then the view template would render a nice error message
+
+	     // we pass the command to the service, and it nows how update/create a appointment
+         // the service returns the new appointment object back to us after the save
+	     Appointment appointment =appointmentService.saveAppointment(command);
+	     
+	     // we add in a "saved" attribute so we can print a nice message indicating a save was successfull
+		 redirectAttributes.addAttribute("saved", true);
+
+
+	     return "redirect:/appointments/"+appointment.getId();
+		  
+     }
+	 
+    /**
+     * Deletes a appointment and redirects to appointments page
+     * @param id the id of the appointment to delete
+     * @param redirectAttributes we use this instead of a Model object, because we want to pass
+     *                           some attributes to the list page
+     * @return redirect path to the list appointment page
+     */
+     @PreAuthorize("hasAuthority('DELETE_APPOINTMENT')")
+	 @GetMapping("/{id}/delete")
+	 public String deleteAppointment(@PathVariable("id") String id, RedirectAttributes redirectAttributes) {
+         // NOTE to handle exceptions, we would wrap the following code in a try/catch
+         // and in the catch forward to a different page
+
+         // send the id passed in to the appointment service
+         appointmentService.deleteAppointment(id);
+
+         // add an attribute to the list page, so a nice message can be shown
+         redirectAttributes.addFlashAttribute("deleted", true);
+
+         // redirect to list appointment path/page
+         return "redirect:/appointments";
+    }
+=======
 
    
+>>>>>>> 58a288b9a6d7ea6df4366f67026f3b60b14ceb79
 
 }
