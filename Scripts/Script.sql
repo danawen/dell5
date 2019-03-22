@@ -1,6 +1,6 @@
 INSERT INTO appointments
 (title, date, time, notes, client_id, pet_id)
-VALUES('Chewy for HeartWorms','2019-03-22','08:00', 'HeartWorm', 3, 2);
+VALUES('Rabbies Vaccination for Adobe','2019-03-22','10:00', 'Rabbies', 3, 2);
 
 update appointments
 set title = 'Chewy for Worms'
