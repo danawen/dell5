@@ -1,6 +1,11 @@
 package springapp.service;
 
+import java.sql.Time;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +27,18 @@ public class AppointmentService {
 		return appointmentDao.list();
 		
 	}
+	
+	public Map<String,Appointment> getTodayAppointments(){		
+		Map<String,Appointment> todaysAppointments = new HashMap<String,Appointment>();	
+		
+		List<Appointment> list = appointmentDao.list();
+		for(Appointment appointment : list ) {
+			if(appointment.getDate().equals(LocalDate.now())) {
+				todaysAppointments.put(Integer.toString(appointment.getTime().getHour()), appointment);
+			}
+		}
+		return todaysAppointments;		
+	}
 
 	public Appointment getAppointment(String id) {
 		return appointmentDao.get(Integer.parseInt(id));
@@ -41,7 +58,6 @@ public class AppointmentService {
 		Appointment appointment = new Appointment(toSave.getId(), toSave.getTitle(), toSave.getDate(), toSave.getTime(), toSave.getNotes(),toSave.getPetId(), toSave.getClientId());
 
 		return appointmentDao.save(appointment);
-	}
-	
+	}	
 	
 }
