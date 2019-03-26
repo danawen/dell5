@@ -44,7 +44,7 @@ public class AppointmentController {
      * @param model the model to populate for merging  with the view
      * @return the client list page template
      */
-	 @PreAuthorize("hasAuthority('LIST_CLIENTS')")
+	 @PreAuthorize("hasAuthority('LIST_APPOINTMENTS')")
 	 @GetMapping
 	 public String listAppointments(Model model) {      
 		Map<String,Appointment> todaysAppointments = appointmentService.getTodayAppointments();		
@@ -58,7 +58,7 @@ public class AppointmentController {
 	     * @param model the model to populate for merging with the view
 	     * @return the client edit page template
 	     */
-		 @PreAuthorize("hasAuthority('GET_CLIENT')")
+		 @PreAuthorize("hasAuthority('GET_APPOINTMENT')")
 		 @GetMapping("/{id}")
 		 public String getAppointment(@PathVariable("id") String id, Model model, boolean saved) {
 

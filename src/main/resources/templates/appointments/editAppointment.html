@@ -27,27 +27,42 @@
   				            <span name="id" data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>
 				        </div>
 		
+						<div class="pure-control-group">
+				            <label for="title">Title: </label>
+				            <input id="title" name="title" type="text" data-th-field="*{title}">
+				        </div>
+				        
 				        <div class="pure-control-group">
-				            <label for="name">Owner: </label>
-				            <input id="name" name="name" type="text" data-th-field="*{name}">
+				            <label for="time">Date: </label>
+				            <input id="date" name="date" type="text" data-th-field="*{date}">
+				        </div>
+				        
+				        <div class="pure-control-group">
+				            <label for="time">Time: </label>
+				            <input id="time" name="time" type="text" data-th-field="*{time}">
+				        </div>
+				        
+				        <div class="pure-control-group">
+				            <label for="client">Client: </label>
+				            <input id="client" name="client" data-th-field="*{clientId}">
 				        </div>
 
 				        <div class="pure-control-group">
-				            <label for="phone">Phone</label>
-				            <input id="phone" name="phone" type="text" data-th-field="*{phoneNumber}">
+				            <label for="pet">Pet: </label>
+				            <input id="pet" name="pet" data-th-field="*{petId}">
 				        </div>
 						
 						
 				        <div class="pure-control-group">
-				            <label for="address">Address</label>
-				            <textarea id="address" name="address" type="text" data-th-field="*{address}">
+				            <label for="notes">Notes</label>
+				            <textarea id="notes" name="notes" type="text" data-th-field="*{notes}">
 				            </textarea>
 				        </div>
 				        <div class="pure-control-group" data-th-if="${command.id != null}">
 							<div data-th-if="${deleted}" class="message-box-info">
 								Deleted successfully
 							</div>
-							<table class="fullWidth pure-table pure-table-horizontal" >
+							<!--<table class="fullWidth pure-table pure-table-horizontal" >
 									<thead>
 										<tr>
 											<th>Pet Id</th>
@@ -67,7 +82,7 @@
 											<td  colspan=3>No associated pets</td>
 										</tr>
 									</tbody>
-								</table>
+								</table>-->
 				        	</div>
 				        </div>
 						
