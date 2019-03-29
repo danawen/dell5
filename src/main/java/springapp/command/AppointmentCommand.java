@@ -5,6 +5,8 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import springapp.domain.Appointment;
 
 /**
@@ -16,7 +18,9 @@ public class AppointmentCommand {
 	private Integer id;
 	private String notes;
 	private String title;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 	private LocalTime time;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate date;
 	private int petId;
 	private int clientId;
