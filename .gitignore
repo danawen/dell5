@@ -14,3 +14,9 @@
 # Maven
 log/
 target/
+
+#DB
+spring-app.db
+.dbeaver
+
+*.orig
