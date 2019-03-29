@@ -32,14 +32,14 @@ import springapp.domain.Appointment;
 public class AppointmentDao {
 	private Logger logger = LoggerFactory.getLogger(AppointmentDao.class);
 	
+	
 	RowMapper<Appointment> simpleAppointmentMapper = new RowMapper<Appointment>() {
 		private Logger logger = LoggerFactory.getLogger(ClientDao.class);
 
 		@Override
 		public Appointment mapRow(ResultSet rs, int rowNum) throws SQLException {	
 			logger.info(LocalDate.parse(rs.getString("date")).toString());
-			logger.info(Integer.toString(LocalTime.parse(rs.getString("time")).getHour()));
-			
+			logger.info(Integer.toString(LocalTime.parse(rs.getString("time")).getHour()));			
 			return new Appointment(rs.getInt("id"), rs.getString("title"),LocalDate.parse(rs.getString("date")) , LocalTime.parse(rs.getString("time")), rs.getString("notes"),rs.getInt("pet_id"),rs.getInt("client_id"));
 		}
 	};
