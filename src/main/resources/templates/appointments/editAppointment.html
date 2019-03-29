@@ -8,6 +8,86 @@
 			<div id="content" class="pure-u-1">
 				<div class="pad right">									
 					<a class="pure-button" data-th-href="@{/appointments}">Cancel</a>
+
+					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{/appointments/{c}/delete(c=${command?.id})}">Delete</a>
+
+				</div>
+				<div class="pad">
+					<form class="pure-form pure-form-aligned" id="theForm" action="#" data-th-action="@{/appointments}" data-th-object="${command}" method="post">
+						<input type="hidden" data-th-field="*{id}"/>
+					    <div data-th-if="${saved}" class="message-box-info">
+							Saved
+					    </div>
+
+						<div class="pure-control-group">
+				            <label>Id</label>
+				            <span data-th-if="${command.id == null}"> New </span>
+  				            <span name="id" data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>
+				        </div>
+		
+						<div class="pure-control-group">
+				            <label for="title">Title: </label>
+				            <input id="title" name="title" type="text" data-th-field="*{title}">
+				        </div>
+				        
+				        <div class="pure-control-group">
+				            <label for="time">Date: </label>
+				            <input id="date" name="date" type="text" data-th-field="*{date}">
+				        </div>
+				        
+				        <div class="pure-control-group">
+				            <label for="time">Time: </label>
+				            <input id="time" name="time" type="text" data-th-field="*{time}">
+				        </div>
+				        
+				        <div class="pure-control-group">
+				            <label for="client">Client: </label>
+				            <input id="client" type="number" name="client" data-th-field="*{clientId}">
+				        </div>
+
+				        <div class="pure-control-group">
+				            <label for="pet">Pet: </label>
+				            <input id="pet" type="number" name="pet" data-th-field="*{petId}">
+				        </div>
+						
+						
+				        <div class="pure-control-group">
+				            <label for="notes">Notes</label>
+				            <textarea id="notes" name="notes" type="text" data-th-field="*{notes}">
+				            </textarea>
+				        </div>
+				        <div class="pure-control-group" data-th-if="${command.id != null}">
+							<div data-th-if="${deleted}" class="message-box-info">
+								Deleted successfully
+							</div>
+							<!--<table class="fullWidth pure-table pure-table-horizontal" >
+									<thead>
+										<tr>
+											<th>Pet Id</th>
+											<th>Name</th>
+											<th>Gender</th>
+										</tr>
+									</thead>
+									<tbody data-th-if="${pets.size() > 0}">	
+										<tr data-th-each="pet : ${pets}">
+											<td> <a data-th-href="@{/pets/{pid}?clientId={cid}(pid=${pet.id}, cid=${command.id})}" data-th-text="${pet.id}">...</a></td>
+											<td data-th-text="${pet.name}">...</td>
+											<td data-th-text="${pet.gender}">...</td>
+										</tr>
+									</tbody>
+									<tbody data-th-if="${pets.size() == 0}">
+										<tr>
+											<td  colspan=3>No associated pets</td>
+										</tr>
+									</tbody>
+								</table>-->
+				        	</div>
+				        </div>
+						
+						
+					</form>
+					
+
 				</div>
 			</div>
 	</div>
