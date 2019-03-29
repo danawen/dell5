@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import springapp.command.AppointmentCommand;
 import springapp.command.ClientCommand;
@@ -46,9 +47,21 @@ public class AppointmentController {
      */
 	 @PreAuthorize("hasAuthority('LIST_APPOINTMENTS')")
 	 @GetMapping
-	 public String listAppointments(Model model) {      
-		Map<String,Appointment> todaysAppointments = appointmentService.getTodayAppointments();		
-		model.addAttribute("TodayAppointments",todaysAppointments);
+	 public String listAppointments(@RequestParam(name="date",required=false) String date,Model model) {
+		 String currentDate = appointmentService.getTodayDate();
+		 if(date != null){			 
+			 Map<String,Appointment> appoinments = appointmentService.getAppointmentForGivenDate(date);
+			 model.addAttribute("TodayAppointments",appoinments);			 
+			 model.addAttribute("currentDate",appointmentService.getFormattedDate(date));			
+			 model.addAttribute("dates",appointmentService.getPastCurrentFutureDate(date));
+		 }
+		 else {			 
+			 Map<String,Appointment> todaysAppointments = appointmentService.getTodayAppointments();		
+			 model.addAttribute("TodayAppointments",todaysAppointments);						 
+			 model.addAttribute("currentDate",appointmentService.getFormattedDate(currentDate));
+			 model.addAttribute("dates",appointmentService.getPastCurrentFutureDate(currentDate));
+		 }		
+		
         return "appointments/listAppointments";
     }
 	 
@@ -71,8 +84,7 @@ public class AppointmentController {
 		        // since we have a valid id, get the client object from the service
 				Appointment appointment = appointmentService.getAppointment(id);
 				// we create a client command that can be used when the browser sends the save object
-				model.addAttribute("command", new AppointmentCommand(appointment));
-				
+				model.addAttribute("command", new AppointmentCommand(appointment));				
 			}
 			return "appointments/editAppointment";
 		}
@@ -126,5 +138,6 @@ public class AppointmentController {
          // redirect to list appointment path/page
          return "redirect:/appointments";
     }
+     
 
 }

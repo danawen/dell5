@@ -3,14 +3,12 @@
 <header th:replace="fragments/head.html :: head" >
 </header>
 <body>
-	<div id="container" class="content pure-g" >
-		<header th:replace="fragments/header.html :: header" >
-		</header>
-		<div id="mainBody" class="pure-u pure-g column">
+	<h1>TBD</h1>
+	<div id="mainBody" class="pure-u pure-g column">
 			<div id="content" class="pure-u-1">
-				<div class="pad right">
-					<button type="submit" form="theForm" class="pure-button"  value="Save">Save</button>
+				<div class="pad right">									
 					<a class="pure-button" data-th-href="@{/appointments}">Cancel</a>
+
 					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{/appointments/{c}/delete(c=${command?.id})}">Delete</a>
 
 				</div>
@@ -89,11 +87,10 @@
 						
 					</form>
 					
-							
+
 				</div>
 			</div>
-		</div>
-    </div>
+	</div>
 </body>
 </html>
 
