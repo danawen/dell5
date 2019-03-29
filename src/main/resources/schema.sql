@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS appointments (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   title varchar(255),
-  date date NOT NULL,
-  time time NOT NULL,
+  date varchar(25) NOT NULL,
+  time varchar(25) NOT NULL,
   notes varchar(600),
   client_id integer,
   pet_id integer,  
