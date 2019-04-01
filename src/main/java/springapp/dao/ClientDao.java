@@ -32,7 +32,7 @@ public class ClientDao {
 
 		@Override
 		public Client mapRow(ResultSet rs, int rowNum) throws SQLException {
-			return new Client(rs.getInt("id"), rs.getString("name"), rs.getString("phone_number"), rs.getString("address"));
+			return new Client(rs.getInt("id"), rs.getString("name"), rs.getString("phone_number"), rs.getString("address"), rs.getString("email"));
 		}
 	};
 	
@@ -40,14 +40,14 @@ public class ClientDao {
     JdbcTemplate jdbcTemplate;
     	
 	public List<Client> list(){
-		List<Client> queryResult = jdbcTemplate.query("SELECT id, name, phone_number, address FROM clients",
+		List<Client> queryResult = jdbcTemplate.query("SELECT id, name, phone_number, address,email FROM clients",
 				simpleMapper);
 		
 		return queryResult;
 	}
 	
 	public Client get(int id) {
-		List<Client> queryResult = jdbcTemplate.query("SELECT id, name, phone_number,address FROM clients WHERE id = ? LIMIT 1", 
+		List<Client> queryResult = jdbcTemplate.query("SELECT id, name, phone_number,address, email  FROM clients WHERE id = ? LIMIT 1", 
 				new Object[] {id},
 				simpleMapper);
 		
@@ -70,10 +70,11 @@ public class ClientDao {
 				
 				@Override
 				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-					PreparedStatement statement = con.prepareStatement("INSERT INTO clients(name, phone_number, address) VALUES (?, ?, ?)");
+					PreparedStatement statement = con.prepareStatement("INSERT INTO clients(name, phone_number, address, email) VALUES (?, ?, ?,?)");
 					statement.setString(1, client.getName());
 					statement.setString(2, client.getPhoneNumber());
 					statement.setString(3, client.getAddress());
+					statement.setString(4, client.getEmail());
 					return statement;
 
 				}
@@ -82,8 +83,8 @@ public class ClientDao {
 			id = holder.getKey().intValue();
 			
 		} else {
-			jdbcTemplate.update("UPDATE clients SET name = ?, phone_number = ? , address = ? WHERE id = ?",
-					new Object[] {client.getName(), client.getPhoneNumber(), client.getAddress(), id});
+			jdbcTemplate.update("UPDATE clients SET name = ?, phone_number = ? , address = ? , email = ? WHERE id = ?",
+					new Object[] {client.getName(), client.getPhoneNumber(), client.getAddress(), client.getEmail(), id});
 		}
 		
 		return get(id);

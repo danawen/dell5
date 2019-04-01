@@ -35,4 +35,6 @@ CREATE TABLE IF NOT EXISTS appointments (
   FOREIGN KEY (pet_id) REFERENCES pets(id)
 );
 
+Alter Table Clients add column email varchar(255);
+
 insert into users values (null, 'admin', 'password', 'SUPER_ADMIN');
