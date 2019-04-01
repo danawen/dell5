@@ -5,10 +5,13 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 public class Appointment {	
 	private final Integer id;
 	private final String title;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private final LocalDate date;
 	private final LocalTime time;
 	private final String notes;
