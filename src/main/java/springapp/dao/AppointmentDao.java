@@ -55,6 +55,16 @@ public class AppointmentDao {
 		return queryResult;
 	}
 	
+	public List<Appointment> listappointmetsforPet(Integer pet_id){
+		List<Appointment> queryResult = jdbcTemplate.query(
+				"SELECT id, title, date, time,notes,pet_id, client_id FROM appointments WHERE pet_id = ?",
+				new Object[] {pet_id},
+				simpleAppointmentMapper);
+		
+		
+		return queryResult;
+	}
+	
 	
 	public List<Appointment> appointment(Date date){
 		List<Appointment> queryResult = jdbcTemplate.query(
