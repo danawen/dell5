@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springapp.command.PetCommand;
+import springapp.controller.AppointmentController;
 import springapp.controller.PetController;
 import springapp.dao.AppointmentDao;
 import springapp.dao.PetDao;
@@ -26,6 +27,7 @@ public class PetService {
 	
 	@Autowired 
 	AppointmentDao aptDao;
+	
 	
 	public List<Pet> getPets(){
 		return petDao.list();
