@@ -33,19 +33,25 @@ public class AppointmentDao {
 	private Logger logger = LoggerFactory.getLogger(AppointmentDao.class);
 	
 	
-	RowMapper<Appointment> simpleAppointmentMapper = new RowMapper<Appointment>() {
-		private Logger logger = LoggerFactory.getLogger(ClientDao.class);
+	RowMapper<Appointment> simpleAppointmentMapper = new RowMapper<Appointment>() {		
 
 		@Override
-		public Appointment mapRow(ResultSet rs, int rowNum) throws SQLException {	
-			logger.info(LocalDate.parse(rs.getString("date")).toString());
-			logger.info(Integer.toString(LocalTime.parse(rs.getString("time")).getHour()));			
-			return new Appointment(rs.getInt("id"), rs.getString("title"),LocalDate.parse(rs.getString("date")) , LocalTime.parse(rs.getString("time")), rs.getString("notes"),rs.getInt("pet_id"),rs.getInt("client_id"));
+		public Appointment mapRow(ResultSet rs, int rowNum) throws SQLException {						
+			return new Appointment(rs.getInt("id"), rs.getString("title"),LocalDate.parse(rs.getString("date")) , LocalTime.parse(rs.getString("time")), rs.getInt("client_id"),rs.getInt("pet_id"),rs.getString("notes"));
+		}
+	};
+	
+	RowMapper<String> simpleStringMapper = new RowMapper<String>() {
+
+		@Override
+		public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+			return rs.getString("time");
 		}
 	};
 	
 	 @Autowired
 	 JdbcTemplate jdbcTemplate;
+	 
 	public List<Appointment> list(){
 		List<Appointment> queryResult = jdbcTemplate.query(
 				"SELECT id, title, date, time,notes,pet_id, client_id FROM appointments",
@@ -90,13 +96,13 @@ public class AppointmentDao {
 				
 				@Override
 				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-					PreparedStatement statement = con.prepareStatement("INSERT INTO appointments(title, date, time, notes, client_id, pet_id) VALUES (?, ?, ?, ?, ?, ?)");
+					PreparedStatement statement = con.prepareStatement("INSERT INTO appointments(title, date, time, client_id, pet_id,notes) VALUES (?, ?, ?, ?, ?, ?)");
 					statement.setString(1, appointment.getTitle());
 					statement.setString(2, appointment.getDate().toString());
-					statement.setString(3, appointment.getTime().toString());
-					statement.setString(4, appointment.getNotes());
-					statement.setInt(5,appointment.getClientId());
-					statement.setInt(6,appointment.getPetId());
+					statement.setString(3, appointment.getTime().toString());					
+					statement.setInt(4,appointment.getClientId());
+					statement.setInt(5,appointment.getPetId());
+					statement.setString(6, appointment.getNotes());
 					return statement;
 
 				}
@@ -117,5 +123,14 @@ public class AppointmentDao {
 		jdbcTemplate.update("DELETE FROM appointments WHERE id = ?",
 				new Object[] {id});
 		
+	}
+	
+	public List<String> GetDefaultTimeList() {
+		List<String> queryResult = jdbcTemplate.query(
+				"SELECT time FROM AppointmentTime",
+				simpleStringMapper);
+		
+		
+		return queryResult;
 	}
 }

@@ -5,8 +5,13 @@ import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 
+
+import org.slf4j.Logger;
+
+import springapp.controller.AppointmentController;
 import springapp.domain.Appointment;
 
 /**
@@ -22,22 +27,24 @@ public class AppointmentCommand {
 	private LocalTime time;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate date;
-	private int petId;
-	private int clientId;
+	private Integer petId;
+	private Integer clientId;
+	
+	private Logger logger = LoggerFactory.getLogger(AppointmentCommand.class);
 
 	/**
 	 * Creates a command object that has the initial values the same as the Appointment passed in
 	 * @param Appointment the Appointment to initialize the command object with
 	 */
 	public AppointmentCommand(Appointment appointment) {
-		if(appointment != null) {
-			id = appointment.getId();
+		if(appointment != null) {					
+			this.clientId= appointment.getClientId();			
+			this.petId= appointment.getPetId();
+			this.id = appointment.getId();
 			this.title= appointment.getTitle();
 			this.notes = appointment.getNotes();
 			this.time = appointment.getTime();
-			this.date = appointment.getDate();
-			this.petId= appointment.getPetId();
-			this.clientId=appointment.getClientId();
+			this.date = appointment.getDate();				
 		}
 	}
 
@@ -69,7 +76,7 @@ public class AppointmentCommand {
 	 * Set the name of the appointment
 	 * @param name the name of the appointment
 	 */
-	public void setpetId(int petId) {
+	public void setpetId(Integer petId) {
 		this.petId = petId;
 	}
 	
@@ -78,7 +85,7 @@ public class AppointmentCommand {
 	 * Set the name of the appointment
 	 * @param name the name of the appointment
 	 */
-	public void setclientId(int clientId) {
+	public void setclientId(Integer clientId) {
 		this.clientId = clientId;
 	}
 

@@ -1,18 +1,16 @@
 package springapp.service;
 
-import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import springapp.command.AppointmentCommand;
 import springapp.dao.AppointmentDao;
 import springapp.domain.Appointment;
@@ -24,7 +22,7 @@ public class AppointmentService {
 	@Autowired 
 	AppointmentDao appointmentDao;
 
-
+	private Logger logger = LoggerFactory.getLogger(AppointmentService.class);
 	public List<Appointment> getAppointments(){
 		return appointmentDao.list();
 		
@@ -45,8 +43,13 @@ public class AppointmentService {
 		return appointmentDao.get(Integer.parseInt(id));
 	}
 	
-	public Appointment getAppointment(Integer id) {
-		return appointmentDao.get(id);
+	
+	public List<LocalTime> geTime(){
+		List<LocalTime> defaultTimeList = new ArrayList<>();
+		for(String time : appointmentDao.GetDefaultTimeList()) {
+			defaultTimeList.add(LocalTime.parse(time,DateTimeFormatter.ISO_TIME));
+		}
+		return defaultTimeList;
 	}
 	
 	public Map<String,Appointment> getAppointmentForGivenDate(String date) {
@@ -67,8 +70,7 @@ public class AppointmentService {
 
 	
 	public Appointment saveAppointment(AppointmentCommand toSave) {
-		Appointment appointment = new Appointment(toSave.getId(), toSave.getTitle(), toSave.getDate(), toSave.getTime(), toSave.getNotes(),toSave.getPetId(), toSave.getClientId());
-
+		Appointment appointment = new Appointment(toSave.getId(), toSave.getTitle(), toSave.getDate(), toSave.getTime(),toSave.getClientId(), toSave.getPetId(), toSave.getNotes());
 		return appointmentDao.save(appointment);
 	}
 	
@@ -92,6 +94,20 @@ public class AppointmentService {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, MMM d yyyy");
 		LocalDate localDate = LocalDate.parse(date);
 		return localDate.format(formatter).toString();
+	}
+	
+	public List<LocalTime> getAvailableTimeForGivenDate(String date,LocalTime selectedTime)
+	{		
+		List<LocalTime> availableTime = new ArrayList<LocalTime>();
+		List<LocalTime> defaultList = geTime();		
+		Map<String,Appointment> appointments = getAppointmentForGivenDate(date);
+		availableTime.add(selectedTime);
+		for(LocalTime time : defaultList ) {				
+			if(!appointments.containsKey(Integer.toString(time.getHour()))) {
+				availableTime.add(time);
+			}			
+		}		
+		return availableTime;		
 	}
 	
 }

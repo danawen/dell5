@@ -38,3 +38,8 @@ CREATE TABLE IF NOT EXISTS appointments (
 Alter Table Clients add column email varchar(255);
 
 insert into users values (null, 'admin', 'password', 'SUPER_ADMIN');
+
+CREATE TABLE IF NOT EXISTS AppointmentTime (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,  
+  time varchar(25) NOT NULL 
+);

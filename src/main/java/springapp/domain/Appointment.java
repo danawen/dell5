@@ -18,14 +18,14 @@ public class Appointment {
 	private final Integer petId;
 	private final Integer clientId;
 	
-	public Appointment(Integer id, String title, LocalDate date, LocalTime time, String notes, Integer petId, Integer clientId) {
+	public Appointment(Integer id, String title, LocalDate date, LocalTime time, Integer clientId, Integer petId, String notes) {
 		this.id = id;
 		this.title = title;
 		this.date = date;
-		this.time = time;
-		this.notes = notes;
+		this.time = time;		
 		this.petId = petId;
 		this.clientId = clientId;
+		this.notes = notes;
 	}
 
 	public Integer getId() {
