@@ -13,6 +13,7 @@ import springapp.controller.AppointmentController;
 import springapp.controller.PetController;
 import springapp.dao.AppointmentDao;
 import springapp.dao.PetDao;
+import springapp.domain.Appointment;
 import springapp.domain.Client;
 import springapp.domain.Pet;
 
