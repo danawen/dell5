@@ -2,6 +2,15 @@
 <data-sources>
 	<data-source id="sqlite_jdbc-16978111810-65b48c6ebbff7881" provider="generic" driver="sqlite_jdbc" name="SQLite - spring-app.db" save-password="true" read-only="false">
 		<connection server="" database="C:\Users\matthew_hauser\dell-spring\team-spring-app\dell5\spring-app.db" url="jdbc:sqlite:C:\Users\matthew_hauser\dell-spring\team-spring-app\dell5\spring-app.db" type="dev"/>
+		<virtual-meta-data>
+			<container name="model">
+				<entity name="appointments">
+					<constraint name="PRIMARY" type="VIRTUAL KEY">
+						<attribute name="id"/>
+					</constraint>
+				</entity>
+			</container>
+		</virtual-meta-data>
 	</data-source>
 	<filters/>
 </data-sources>

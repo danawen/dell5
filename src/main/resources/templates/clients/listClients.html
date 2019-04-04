@@ -8,6 +8,11 @@
 		</header>
 		<div id="mainBody" class="pure-u pure-g column">
 			<div id="content" class="pure-u-1">
+			<form th:object="${clients}" th:action"@{/clients}" method="get">
+				<input type="text" placeholder="Search Client Name" name="search" id="search" th:value="${search}"/>
+				<input type="submit" value="Search"/>
+				<input type="submit" value="Clear Search"/>
+			
 				<div class="pad right">
 					<a class="pure-button"  data-th-href="@{'/clients/new'}">Add client</a>
 				</div>
@@ -34,6 +39,7 @@
 						</tbody>
 					</table>
 				</div>
+				</form>
 			</div>
 		</div>
     </div>
