@@ -11,9 +11,12 @@
           <h1>Appointments</h1>
 			<div id="content" class="pure-u-1">
 			
-				<div class="pad right">									
+				<div class="pad right">	
+				<button type="submit" form="theForm" class="pure-button primary-cta"
+						value="Save"
+					>Save</button>								
 					<a class="pure-button secondary-cta" data-th-href="@{/appointments}">Cancel</a>
-					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{/appointments/{c}/delete(c=${command?.id})}">Delete</a>
+					<a class="pure-button secondary-cta" data-th-if="${command.id != null}" data-th-href="@{/appointments/{c}/delete(c=${command?.id})}">Delete</a>
 
 				</div>
 				<div class="pad page-table">
@@ -28,7 +31,20 @@
 				            <span data-th-if="${command.id == null}"> New </span>
   				            <span name="id" data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>
 				        </div>
-		
+		                <div class="pure-control-group group-style">
+							<label><span>Client</span></label> 
+							<select name= "clientId" data-th-field="*{clientId}" class="input-select">
+								<option data-th-each="client : ${clients}" data-th-value="${client.id}" data-th-text="${client.name}">
+								</option>
+							</select>
+						</div>
+						<div class="pure-control-group group-style">
+							<label><span>Pet</span></label> 
+							<select name = "petId" data-th-field="*{petId}" class="input-select">
+								<option data-th-each="pet : ${pets}" data-th-value="${pet.id}" data-th-text="${pet.name}">
+							    </option>
+							</select>
+						</div>	
 						<div class="pure-control-group group-style">
 				            <label for="title"><span>Title </span></label>
 				            <input id="title" name="title" class="input-field" value="" type="text" data-th-field="*{title}">
@@ -36,25 +52,17 @@
 				        
 				        <div class="pure-control-group group-style">
 				            <label for="time"><span>Date </span></label>
-				            <input id="date" class="input-field" value="" name="date" type="text" data-th-field="*{date}">
+				            <input id="date" class="input-field" name="date" type="date" data-th-field="*{date}">
 				        </div>
 				        
 				        <div class="pure-control-group group-style">
-				            <label for="time"><span>Time </span></label>
-				            <input id="time" class="input-field" value="" name="time" type="text" data-th-field="*{time}">
-				        </div>
-				        
-				        <div class="pure-control-group group-style">
-				            <label for="client"><span>Client</span></label>
-				            <input id="client" class="input-select" type="number" name="client" data-th-field="*{clientId}">
-				        </div>
-
-				        <div class="pure-control-group group-style">
-				            <label for="pet"><span>Pet</psan></label>
-				            <input id="pet" class="input-select" type="number" name="pet" data-th-field="*{petId}">
-				        </div>
-						
-						
+							<label><span>Time</span></label> 
+							<select name = "time" data-th-field="*{time}" class="input-field">
+								<option data-th-each="time : ${availableTime}" data-th-value="${time}" data-th-text="${time}">
+							    </option>
+							</select>
+						</div>		
+                        
 				        <div class="pure-control-group group-style">
 				            <label for="notes"><span>Notes</span></label>
 				            <textarea id="notes" class="input-area" value="" name="notes" type="text" data-th-field="*{notes}">
@@ -64,27 +72,6 @@
 							<div data-th-if="${deleted}" class="message-box-info">
 								Deleted successfully
 							</div>
-							<!--<table class="fullWidth pure-table pure-table-horizontal" >
-									<thead>
-										<tr>
-											<th>Pet Id</th>
-											<th>Name</th>
-											<th>Gender</th>
-										</tr>
-									</thead>
-									<tbody data-th-if="${pets.size() > 0}">	
-										<tr data-th-each="pet : ${pets}">
-											<td> <a data-th-href="@{/pets/{pid}?clientId={cid}(pid=${pet.id}, cid=${command.id})}" data-th-text="${pet.id}">...</a></td>
-											<td data-th-text="${pet.name}">...</td>
-											<td data-th-text="${pet.gender}">...</td>
-										</tr>
-									</tbody>
-									<tbody data-th-if="${pets.size() == 0}">
-										<tr>
-											<td  colspan=3>No associated pets</td>
-										</tr>
-									</tbody>
-								</table>-->
 				        	</div>
 				        </div>
 						

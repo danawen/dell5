@@ -25,6 +25,8 @@
 								<th>Id</th>
 								<th>Name</th>
 								<th>Gender</th>
+								<th>ClientId</th>
+								<th>Client Name</th>
 							</tr>
 						</thead>
 						<tbody>	
@@ -32,6 +34,8 @@
 								<td> <a data-th-href="@{/pets/{id}(id=${pet.id})}" data-th-text="${pet.id}">...</a></td>
 								<td data-th-text="${pet.name}">...</td>
 								<td data-th-text="${pet.gender}">...</td>
+								<td data-th-text="${pet.clientId}">...</td>
+								<td data-th-text="${clientService.getClient(pet.clientId).name}">...</td>
 							</tr>
 						</tbody>
 					</table>
