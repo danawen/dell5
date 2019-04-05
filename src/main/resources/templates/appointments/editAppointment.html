@@ -3,57 +3,61 @@
 <header th:replace="fragments/head.html :: head" >
 </header>
 <body>
-	<h1>TBD</h1>
+  <div id="container" class="content pure-g">
+    <header th:replace="fragments/header.html :: header">
+    </header>
 	<div id="mainBody" class="pure-u pure-g column">
+	  <div class="card">
+          <h1>Appointments</h1>
 			<div id="content" class="pure-u-1">
+			
 				<div class="pad right">									
-					<a class="pure-button" data-th-href="@{/appointments}">Cancel</a>
-
+					<a class="pure-button secondary-cta" data-th-href="@{/appointments}">Cancel</a>
 					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{/appointments/{c}/delete(c=${command?.id})}">Delete</a>
 
 				</div>
-				<div class="pad">
-					<form class="pure-form pure-form-aligned" id="theForm" action="#" data-th-action="@{/appointments}" data-th-object="${command}" method="post">
+				<div class="pad page-table">
+					<form class="pure-form pure-form-aligned form-style" id="theForm" action="#" data-th-action="@{/appointments}" data-th-object="${command}" method="post">
 						<input type="hidden" data-th-field="*{id}"/>
 					    <div data-th-if="${saved}" class="message-box-info">
 							Saved
 					    </div>
 
-						<div class="pure-control-group">
-				            <label>Id</label>
+						<div class="pure-control-group group-style">
+				            <label><span>Id</span></label>
 				            <span data-th-if="${command.id == null}"> New </span>
   				            <span name="id" data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>
 				        </div>
 		
-						<div class="pure-control-group">
-				            <label for="title">Title: </label>
-				            <input id="title" name="title" type="text" data-th-field="*{title}">
+						<div class="pure-control-group group-style">
+				            <label for="title"><span>Title </span></label>
+				            <input id="title" name="title" class="input-field" value="" type="text" data-th-field="*{title}">
 				        </div>
 				        
-				        <div class="pure-control-group">
-				            <label for="time">Date: </label>
-				            <input id="date" name="date" type="text" data-th-field="*{date}">
+				        <div class="pure-control-group group-style">
+				            <label for="time"><span>Date </span></label>
+				            <input id="date" class="input-field" value="" name="date" type="text" data-th-field="*{date}">
 				        </div>
 				        
-				        <div class="pure-control-group">
-				            <label for="time">Time: </label>
-				            <input id="time" name="time" type="text" data-th-field="*{time}">
+				        <div class="pure-control-group group-style">
+				            <label for="time"><span>Time </span></label>
+				            <input id="time" class="input-field" value="" name="time" type="text" data-th-field="*{time}">
 				        </div>
 				        
-				        <div class="pure-control-group">
-				            <label for="client">Client: </label>
-				            <input id="client" type="number" name="client" data-th-field="*{clientId}">
+				        <div class="pure-control-group group-style">
+				            <label for="client"><span>Client</span></label>
+				            <input id="client" class="input-select" type="number" name="client" data-th-field="*{clientId}">
 				        </div>
 
-				        <div class="pure-control-group">
-				            <label for="pet">Pet: </label>
-				            <input id="pet" type="number" name="pet" data-th-field="*{petId}">
+				        <div class="pure-control-group group-style">
+				            <label for="pet"><span>Pet</psan></label>
+				            <input id="pet" class="input-select" type="number" name="pet" data-th-field="*{petId}">
 				        </div>
 						
 						
-				        <div class="pure-control-group">
-				            <label for="notes">Notes</label>
-				            <textarea id="notes" name="notes" type="text" data-th-field="*{notes}">
+				        <div class="pure-control-group group-style">
+				            <label for="notes"><span>Notes</span></label>
+				            <textarea id="notes" class="input-area" value="" name="notes" type="text" data-th-field="*{notes}">
 				            </textarea>
 				        </div>
 				        <div class="pure-control-group" data-th-if="${command.id != null}">
@@ -90,6 +94,8 @@
 
 				</div>
 			</div>
+	</div>
+	</div>
 	</div>
 </body>
 </html>

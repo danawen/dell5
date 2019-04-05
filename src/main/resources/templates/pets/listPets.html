@@ -7,12 +7,19 @@
 		<header th:replace="fragments/header.html :: header" >
 		</header>
 		<div id="mainBody" class="pure-u pure-g column">
+		<div class="card">
+           <div class="title">
+             <h1>Patients</h1>
+           </div>
 			<div id="content" class="pure-u-1">
+			<div class="pad right">
+					<a class="pure-button primary-cta"  data-th-href="@{'/pets/new'}">New</a>
+				</div>
 				<div class="pad">
 				    <div data-th-if="${deleted}" class="message-box-info">
 						Deleted successfully
 				    </div>
-					<table class="fullWidth pure-table pure-table-horizontal">
+					<table class="fullWidth pure-table pure-table-horizontal roster-table">
 						<thead>
 							<tr>
 								<th>Id</th>
@@ -31,6 +38,7 @@
 				</div>
 			</div>
 		</div>
+    </div>
     </div>
 </body>
 </html>
