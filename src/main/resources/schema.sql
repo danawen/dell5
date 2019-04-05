@@ -35,26 +35,4 @@ CREATE TABLE IF NOT EXISTS appointments (
   FOREIGN KEY (pet_id) REFERENCES pets(id)
 );
 
-Alter Table Clients add column email varchar(255);
-
 insert into users values (null, 'admin', 'password', 'SUPER_ADMIN');
-
-CREATE TABLE IF NOT EXISTS AppointmentTime (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,  
-  time varchar(25) NOT NULL 
-);
-
-INSERT INTO AppointmentTime('time') VALUES
-('08:00'),
-('09:00'),
-('10:00'),
-('11:00'),
-('12:00'),
-('13:00'),
-('14:00'),
-('15:00'),
-('16:00'),
-('17:00'),
-('18:00'),
-('19:00'),
-('20:00')
