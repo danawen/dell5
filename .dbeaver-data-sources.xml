@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data-sources>
-	<data-source id="sqlite_jdbc-16978111810-65b48c6ebbff7881" provider="generic" driver="sqlite_jdbc" name="SQLite - spring-app.db" save-password="true" read-only="false">
-		<connection server="" database="C:\Full-Stack\TeamSpace\dell5\spring-app.db" url="jdbc:sqlite:C:\Full-Stack\TeamSpace\dell5\spring-app.db" type="dev"/>
+	<data-source id="sqlite_jdbc-169a7488304-1aac2b49d520c466" provider="generic" driver="sqlite_jdbc" name="SQLite - spring-app.db" save-password="true" read-only="false">
+		<connection server="" database="C:\Users\Joseph_C_Stewart\Desktop\spring-app\spring-app.db" url="jdbc:sqlite:C:\Users\Joseph_C_Stewart\Desktop\spring-app\spring-app.db" type="dev"/>
 	</data-source>
 	<filters/>
 </data-sources>
