@@ -13,13 +13,13 @@
 					<a class="pure-button"  data-th-if="${fromClientPage}" data-th-href="@{/clients/{c}(c=${command.client.id})}">Cancel</a>
 					<a class="pure-button"  data-th-if="${!fromClientPage}" data-th-href="@{/pets}">Cancel</a>
 					
-					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{'/pets/'+${command?.id}+'/delete'}">Delete</a>
+					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{'/pets/'+${command?.id}+'/delete'}">Delete</a>				
+					<a class="pure-button" data-th-href="@{/appointments/new?pet_id={c}(c=${command?.id})}">Add Appointment</a>		
 
 				</div>
 				<div class="pad">
 					<form class="pure-form pure-form-aligned" id="theForm" action="#" data-th-action="@{/pets}" data-th-object="${command}" method="post">
 						<input type="hidden" data-th-field="*{id}"/>
-						<input type="hidden" data-th-field="*{clientId}"/>
 						<input type="hidden" id="fromClientPage" name="fromClientPage" data-th-value="${fromClientPage}"/>
 						
 					    <div data-th-if="${saved}" class="message-box-info">
@@ -29,6 +29,11 @@
 						<div class="pure-control-group">
 				            <label>Client</label>
 				            <span data-th-text="${command.client.name}"> client </span>
+				        </div>
+				        
+				         <div class="pure-control-group">
+				            <label>Client Address</label>
+				            <span data-th-text="${command.client.address}"> client </span>
 				        </div>
 				        
 						<div class="pure-control-group">
@@ -50,12 +55,50 @@
 							    <option data-th-value="'Male'" data-th-text="Male"></option>
 							</select>
 				        </div>
+				        
+				         <div class="pure-control-group">
+				            <label>Client</label>
+							<select th:field="*{clientId}">
+  							<option th:each="client : ${clientList}" 
+							          th:value="${client.id}" 
+							          th:text="${client.name}"></option>
+							</select>
+				        </div>
 						
 						
 				        <div class="pure-control-group">
 				            <label for="altered">Altered</label>
 				            <input id="altered" name="altered" type="checkbox" data-th-field="*{altered}">
 				        </div>
+				        
+				        <div class="pure-control-group" data-th-if="${command.id != null}">
+							<div data-th-if="${deleted}" class="message-box-info">
+								Deleted successfully
+							</div>
+							<table class="fullWidth pure-table pure-table-horizontal" >
+									<thead>
+										<tr>
+											<th>Appointment Id</th>
+											<th>Title</th>
+											<th>Date</th>
+											<th>Time</th>
+										</tr>
+									</thead>
+									<tbody data-th-if="${appointments.size() > 0}">	
+										<tr data-th-each="apt : ${appointments}">
+											<td> <a data-th-href="@{/appointments/{id}(id=${apt.id})}" data-th-text="${apt.id}">...</a></td>
+											<td data-th-text="${apt.title}">...</td>
+											<td data-th-text="${apt.date}">...</td>
+											<td data-th-text="${apt.time}">...</td>										
+										</tr>
+									</tbody>
+									<tbody data-th-if="${appointments.size() == 0}">
+										<tr>
+											<td  colspan=3>No associated appointments</td>
+										</tr>
+									</tbody>
+								</table>
+				        	</div>
 				        
 					</form>
 					

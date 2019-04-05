@@ -33,8 +33,8 @@ public class ClientControllerTest {
 
     static List<Client> clients = new ArrayList();
     static  {
-        clients.add(new Client(1, "John Doe", "555-555-5555", "1234 main street"));
-        clients.add(new Client(2, "Jane Smith", "555-123-1234", "9876 country road"));
+    	 clients.add(new Client(1, "John Doe", "555-555-5555", "1234 main street","email1"));
+         clients.add(new Client(2, "Jane Smith", "555-123-1234", "9876 country road", "email2"));
 
     }
 
