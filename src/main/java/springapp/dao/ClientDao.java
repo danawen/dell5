@@ -46,6 +46,19 @@ public class ClientDao {
 		return queryResult;
 	}
 	
+	public List<Client> get(String name) {
+		List<Client> queryResult = jdbcTemplate.query("SELECT id, name, phone_number,address, email  FROM clients WHERE name like ?", 
+				new Object[] {name},
+				simpleMapper);
+		if(queryResult.isEmpty()) {
+			return null;
+		}
+		
+		return queryResult;
+		
+		
+	}
+	
 	public Client get(int id) {
 		List<Client> queryResult = jdbcTemplate.query("SELECT id, name, phone_number,address, email  FROM clients WHERE id = ? LIMIT 1", 
 				new Object[] {id},

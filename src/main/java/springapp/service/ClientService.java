@@ -25,8 +25,12 @@ public class ClientService {
 
 	public List<Client> getClients(){
 		return clientDao.list();
-		
 	}
+	
+	public List<Client> searchClients(String name){
+		return clientDao.get(name);
+	}
+	
 
 	public Client getClient(String id) {
 		return clientDao.get(Integer.parseInt(id));
