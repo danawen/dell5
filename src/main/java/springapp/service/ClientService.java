@@ -43,7 +43,7 @@ public class ClientService {
 
 	
 	public Client saveClient(ClientCommand toSave) {
-		Client client = new Client(toSave.getId(), toSave.getName(), toSave.getPhoneNumber(), toSave.getAddress());
+		Client client = new Client(toSave.getId(), toSave.getName(), toSave.getPhoneNumber(), toSave.getAddress(), toSave.getEmail());	
 
 		return clientDao.save(client);
 	}

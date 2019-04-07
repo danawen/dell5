@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import springapp.command.PetCommand;
+import springapp.domain.Appointment;
 import springapp.domain.Client;
 import springapp.domain.Pet;
 import springapp.service.ClientService;
@@ -59,6 +60,7 @@ public class PetController {
         // we add the pets to the model
         // Note we are not adding the PetCommand instances, but Pet instances
 		model.addAttribute("pets", pets);
+		model.addAttribute("clientService", clientService);
         return "pets/listPets";
     }
 
@@ -110,14 +112,23 @@ public class PetController {
 
         // we get the client based on the client id in the command
 		Client client = clientService.getClient(petCommand.getClientId());
+		
+		List<Client> clientList = clientService.getClients();
+
+		logger.info("total clients : "+clientList.size());
 
 		// we set the client instance in the pet command,
         // when we got the command earlier, we only had the clientid, but now we should have the full client object.
         // we do this because we want to display the client info (name) not just the id.
-		petCommand.setClient(client);			
+		petCommand.setClient(client);	
+		List<Appointment> apptmnts =petService.getAppointments(petCommand.getId()) ;
+		logger.info("total appointments : "+apptmnts.size());
 
+		logger.info("pet Id is :"+petCommand.getId() );
 		// we add the command pet command instance to the mode (which has the client instance as well as the pet info)
 		model.addAttribute("command", petCommand);
+		model.addAttribute("clientList", clientList ); 
+		model.addAttribute("appointments",apptmnts ); 
 		return "pets/editPet";
 	}
 
@@ -133,6 +144,7 @@ public class PetController {
 	@PostMapping
 	 public String savePet(PetCommand command, RedirectAttributes redirectAttributes, boolean fromClientPage) {
 
+		
         // we pass in the pet command to the service to update or create a new pet
         Pet pet = petService.savePet(command);
 
