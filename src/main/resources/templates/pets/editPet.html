@@ -7,14 +7,17 @@
 		<header th:replace="fragments/header.html :: header" >
 		</header>
 		<div id="mainBody" class="pure-u pure-g column">
+		<div class="card">
+           <div class="title">
+             <h1>Edit Patient Information</h1>
+           </div>
 			<div id="content" class="pure-u-1">
 				<div class="pad right">
 					<button type="submit" form="theForm" class="pure-button"  value="Save">Save</button>
 					<a class="pure-button"  data-th-if="${fromClientPage}" data-th-href="@{/clients/{c}(c=${command.client.id})}">Cancel</a>
 					<a class="pure-button"  data-th-if="${!fromClientPage}" data-th-href="@{/pets}">Cancel</a>
 					
-					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{'/pets/'+${command?.id}+'/delete'}">Delete</a>				
-					<a class="pure-button" data-th-href="@{/appointments/new?pet_id={c}(c=${command?.id})}">Add Appointment</a>		
+					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{'/pets/'+${command?.id}+'/delete'}">Delete</a>
 
 				</div>
 				<div class="pad">
@@ -29,11 +32,6 @@
 						<div class="pure-control-group">
 				            <label>Client</label>
 				            <span data-th-text="${command.client.name}"> client </span>
-				        </div>
-				        
-				         <div class="pure-control-group">
-				            <label>Client Address</label>
-				            <span data-th-text="${command.client.address}"> client </span>
 				        </div>
 				        
 						<div class="pure-control-group">
@@ -106,6 +104,7 @@
 				</div>
 			</div>
 		</div>
+    </div>
     </div>
 </body>
 </html>
