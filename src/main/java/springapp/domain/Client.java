@@ -5,15 +5,13 @@ public class Client {
 	private final String name;
 	private final String phoneNumber;
 	private final String address;
-	private final String email;
 	
 
-	public Client(Integer id, String name, String phoneNumber, String address, String email) {
+	public Client(Integer id, String name, String phoneNumber, String address) {
 		this.id = id;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
-		this.email= email;
 	}
 
 	
@@ -31,10 +29,6 @@ public class Client {
 
 	public Integer getId() {
 		return id;
-	}
-	
-	public String getEmail() {
-		return email;
 	}
 	
 	

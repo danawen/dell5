@@ -1,7 +1,6 @@
 package springapp.controller;
 
-
-import java.time.LocalTime;
+import java.sql.Time;
 import java.util.List;
 import java.util.Map;
 
@@ -21,10 +20,8 @@ import springapp.command.AppointmentCommand;
 import springapp.command.ClientCommand;
 import springapp.domain.Appointment;
 import springapp.domain.Client;
-import springapp.domain.Pet;
 import springapp.service.AppointmentService;
 import springapp.service.ClientService;
-import springapp.service.PetService;
 
 /**
  * This controller handles all client related pages
@@ -40,13 +37,6 @@ public class AppointmentController {
     // Inject in a ClientService claass
 	@Autowired
 	AppointmentService appointmentService;
-	
-	@Autowired
-	ClientService clientService;
-	
-	@Autowired
-	PetService petService;
-
 
     /**
      * Returns the name of the view template that should be used along witht the model to draw the list of clients
@@ -86,25 +76,15 @@ public class AppointmentController {
 		 public String getAppointment(@PathVariable("id") String id, Model model, boolean saved) {
 
 			 model.addAttribute("saved", saved);
-			 List<Client> clients = clientService.getClients();
-			 List<Pet> pets = petService.getPets();
-			 List<LocalTime> time = appointmentService.geTime();
-			 
-			 model.addAttribute("pets", pets);
-			 model.addAttribute("clients", clients );
-			 model.addAttribute("availableTime",time);			 
-			 
+			
 		    if(id.equals("new")) {
 		        // create an empty command object to merge with the view template
 				model.addAttribute("command", new AppointmentCommand(null));	
 			} else {
 		        // since we have a valid id, get the client object from the service
-				Appointment appointment = appointmentService.getAppointment(id);				
-				List<LocalTime> availableTimes = appointmentService.getAvailableTimeForGivenDate(appointment.getDate().toString(),appointment.getTime());				
+				Appointment appointment = appointmentService.getAppointment(id);
 				// we create a client command that can be used when the browser sends the save object
-				model.addAttribute("command", new AppointmentCommand(appointment));	
-				model.addAttribute("availableTime",availableTimes);
-				
+				model.addAttribute("command", new AppointmentCommand(appointment));				
 			}
 			return "appointments/editAppointment";
 		}
@@ -124,13 +104,15 @@ public class AppointmentController {
          // then the view template would render a nice error message
 
 	     // we pass the command to the service, and it nows how update/create a appointment
-         // the service returns the new appointment object back to us after the save		 
-		 
-	     Appointment appointment = appointmentService.saveAppointment(command);
+         // the service returns the new appointment object back to us after the save
+	     Appointment appointment =appointmentService.saveAppointment(command);
 	     
 	     // we add in a "saved" attribute so we can print a nice message indicating a save was successfull
 		 redirectAttributes.addAttribute("saved", true);
-	     return "redirect:/appointments/"+appointment.getId();		  
+
+
+	     return "redirect:/appointments/"+appointment.getId();
+		  
      }
 	 
     /**
