@@ -8,15 +8,16 @@
 	<div class="content">
 		<div id="nav" class="pure-u column" data-th-fragment="header">
 	        <div class="nav-inner">
+	        <img class= "logo" src="/images/spot_on_light.png" alt="Logo">
 	            <div class="pure-menu">
-	                <ul class="pure-menu-list" sec:authorize="isAuthenticated()">
-	                    <li class="pure-menu-item">
+	                <ul class="pure-menu-list left-nav" sec:authorize="isAuthenticated()">
+	                    <li class="pure-menu-item nav-item">
 	                    	<a href="#" data-th-href="@{'/'}" class="pure-menu-link">Home</a>
                     	</li>
 	                    <li class="pure-menu-item">
 	                    	<a href="#" data-th-href="@{'/clients'}" class="pure-menu-link">Clients</a></li>
 	                    <li class="pure-menu-item">
-	                    	<a href="#" data-th-href="@{'/pets'}" class="pure-menu-link">Pets</a>
+	                    	<a href="#" data-th-href="@{'/pets'}" class="pure-menu-link">Patients</a>
                     	</li>
 	                    <li class="pure-menu-item">
 	                    	<a href="#" data-th-href="@{'/appointments'}" class="pure-menu-link">Appointments</a>
@@ -39,5 +40,4 @@
 
 </body>
 </html>
-
 
