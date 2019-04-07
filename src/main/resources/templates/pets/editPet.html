@@ -7,10 +7,6 @@
 		<header th:replace="fragments/header.html :: header" >
 		</header>
 		<div id="mainBody" class="pure-u pure-g column">
-		<div class="card">
-           <div class="title">
-             <h1>Edit Patient Information</h1>
-           </div>
 			<div id="content" class="pure-u-1">
 				<div class="pad right">
 					<button type="submit" form="theForm" class="pure-button"  value="Save">Save</button>
@@ -79,7 +75,7 @@
 							<div data-th-if="${deleted}" class="message-box-info">
 								Deleted successfully
 							</div>
-							<table class="fullWidth pure-table pure-table-horizontal page-table" >
+							<table class="fullWidth pure-table pure-table-horizontal" >
 									<thead>
 										<tr>
 											<th>Appointment Id</th>
@@ -110,7 +106,6 @@
 				</div>
 			</div>
 		</div>
-    </div>
     </div>
 </body>
 </html>
