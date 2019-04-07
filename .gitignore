@@ -17,6 +17,7 @@ target/
 
 #DB
 spring-app.db
-.dbeaver
+.dbeaver-data-sources.xml
 
 *.orig
+/bin/
