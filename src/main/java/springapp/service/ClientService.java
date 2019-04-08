@@ -25,8 +25,12 @@ public class ClientService {
 
 	public List<Client> getClients(){
 		return clientDao.list();
-		
 	}
+	
+	public List<Client> searchClients(String name){
+		return clientDao.get(name);
+	}
+	
 
 	public Client getClient(String id) {
 		return clientDao.get(Integer.parseInt(id));
@@ -43,7 +47,7 @@ public class ClientService {
 
 	
 	public Client saveClient(ClientCommand toSave) {
-		Client client = new Client(toSave.getId(), toSave.getName(), toSave.getPhoneNumber(), toSave.getAddress());
+		Client client = new Client(toSave.getId(), toSave.getName(), toSave.getPhoneNumber(), toSave.getAddress(), toSave.getEmail());	
 
 		return clientDao.save(client);
 	}

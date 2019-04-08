@@ -7,41 +7,47 @@
 		<header th:replace="fragments/header.html :: header" >
 		</header>
 		<div id="mainBody" class="pure-u pure-g column">
-			<div id="content" class="pure-u-1">
+			<div class="card">
+             <h1>Edit Client</h1>
+             <div id="content" class="pure-u-1">
 				<div class="pad right">
-					<button type="submit" form="theForm" class="pure-button"  value="Save">Save</button>
-					<a class="pure-button" data-th-href="@{/clients}">Cancel</a>
+					<a class="pure-button secondary-cta" data-th-href="@{/clients}">Cancel</a>
+					<button type="submit" form="theForm" class="pure-button primary-cta"  value="Save">Save</button>
 					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{/clients/{c}/delete(c=${command?.id})}">Delete</a>
 					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{/pets/new?clientId={c}(c=${command?.id})}">Add Pet</a>
-
 				</div>
-				<div class="pad">
-					<form class="pure-form pure-form-aligned" id="theForm" action="#" data-th-action="@{/clients}" data-th-object="${command}" method="post">
+				
+				<div class="pad page-table">
+					<form class="pure-form pure-form-aligned form-style" id="theForm" action="#" data-th-action="@{/clients}" data-th-object="${command}" method="post">
 						<input type="hidden" data-th-field="*{id}"/>
 					    <div data-th-if="${saved}" class="message-box-info">
 							Saved
 					    </div>
 
-						<div class="pure-control-group">
-				            <label>Id</label>
+						<div class="pure-control-group group-style">
+				            <label><span>Id</span></label>
 				            <span data-th-if="${command.id == null}"> New </span>
   				            <span name="id" data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>
 				        </div>
 		
-				        <div class="pure-control-group">
-				            <label for="name">Name</label>
-				            <input id="name" name="name" type="text" data-th-field="*{name}">
+				        <div class="pure-control-group group-style">
+				            <label for="name"><span>Name</span></label>
+				            <input id="name" class="input-field" name="name" value="" type="text" data-th-field="*{name}">
 				        </div>
 
-				        <div class="pure-control-group">
-				            <label for="phone">Phone</label>
-				            <input id="phone" name="phone" type="text" data-th-field="*{phoneNumber}">
+				        <div class="pure-control-group group-style">
+				            <label for="phone"><span>Phone</span></label>
+				            <input id="phone" name="phone" class="phone-field" value="" maxlength="12" type="text" data-th-field="*{phoneNumber}">
 				        </div>
 						
+						 <div class="pure-control-group group-style">
+				            <label for="email"><span>Email</span></label>
+				            <input id="email" name="email" class="input-field" type="text" data-th-field="*{email}">
+				        </div>
 						
-				        <div class="pure-control-group">
-				            <label for="address">Address</label>
-				            <textarea id="address" name="address" type="text" data-th-field="*{address}">
+				        <div class="pure-control-group group-style">
+				            <label for="address"><span>Address</span></label>
+				            <textarea id="address" class="input-area" name="address" type="text" data-th-field="*{address}">
 				            </textarea>
 				        </div>
 				        <div class="pure-control-group" data-th-if="${command.id != null}">
@@ -54,6 +60,7 @@
 											<th>Pet Id</th>
 											<th>Name</th>
 											<th>Gender</th>
+											<th>Altered</th>
 										</tr>
 									</thead>
 									<tbody data-th-if="${pets.size() > 0}">	
@@ -61,6 +68,7 @@
 											<td> <a data-th-href="@{/pets/{pid}?clientId={cid}(pid=${pet.id}, cid=${command.id})}" data-th-text="${pet.id}">...</a></td>
 											<td data-th-text="${pet.name}">...</td>
 											<td data-th-text="${pet.gender}">...</td>
+											<td><input id="altered" name="altered" type="checkbox" th:checked="${pet.altered}" disabled readonly></td>
 										</tr>
 									</tbody>
 									<tbody data-th-if="${pets.size() == 0}">
@@ -80,9 +88,9 @@
 			</div>
 		</div>
     </div>
+    </div>
 </body>
 </html>
-
 
 
 

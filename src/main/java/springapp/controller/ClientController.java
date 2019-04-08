@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import springapp.command.ClientCommand;
@@ -32,24 +34,29 @@ public class ClientController {
     // Inject in a ClientService claass
 	@Autowired
 	ClientService clientService;
-
+	
     /**
      * Returns the name of the view template that should be used along witht the model to draw the list of clients
      *
      * Note that no addiontal path is specified, and that this method only handles a GET
      * @param model the model to populate for merging  with the view
      * @return the client list page template
-     */
+     */	
+	
 	 @PreAuthorize("hasAuthority('LIST_CLIENTS')")
 	 @GetMapping
-	 public String listClients(Model model) {
-        List<Client> clients = clientService.getClients();
+	 public String listClients(@RequestParam (value = "search", required=false) String search, Model model) {
+		 List<Client> clients; 
+		 if(search==null || search.equals("")) {
+		      clients = clientService.getClients();
+		 }  else {
+			 clients = clientService.searchClients(search);
+		 }
 		model.addAttribute("clients", clients);
-		logger.info("hey");
-        return "clients/listClients";
-    }
-
-
+       return "clients/listClients";
+   }
+	 
+	 
     /**
      * Generates the model for rendering the specific client page
      * @param id the id of the client we want to render, if the value is 'new' that is for creating a new client
