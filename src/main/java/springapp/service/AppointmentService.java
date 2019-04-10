@@ -101,13 +101,24 @@ public class AppointmentService {
 		List<LocalTime> availableTime = new ArrayList<LocalTime>();
 		List<LocalTime> defaultList = geTime();		
 		Map<String,Appointment> appointments = getAppointmentForGivenDate(date);
-		availableTime.add(selectedTime);
+		if(selectedTime != null) {
+			availableTime.add(selectedTime);
+		}			
 		for(LocalTime time : defaultList ) {				
 			if(!appointments.containsKey(Integer.toString(time.getHour()))) {
 				availableTime.add(time);
 			}			
 		}		
 		return availableTime;		
+	}
+	
+	public boolean IsEnableNewAppointment(String date)
+	{	
+		Map<String,Appointment> appointments = getAppointmentForGivenDate(date);
+		List<LocalTime> defaultList = geTime();
+		if(LocalDate.parse(date).isBefore(LocalDate.now()) || appointments.size()== defaultList.size() )
+			return false;
+		return true;
 	}
 	
 }
