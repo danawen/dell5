@@ -33,10 +33,10 @@
 				        </div>
 		                <div class="pure-control-group group-style">
 							<label><span>Client</span></label> 
-							<select name= "clientId" data-th-field="*{clientId}" class="input-select">
-								<option data-th-each="client : ${clients}" data-th-value="${client.id}" data-th-text="${client.name}">
-								</option>
-							</select>
+								<select name= "clientId" data-th-field="*{clientId}" class="input-select">
+									<option data-th-each="client : ${clients}" data-th-value="${client.id}" data-th-text="${client.name}">
+									</option>
+								</select>								
 						</div>
 						<div class="pure-control-group group-style">
 							<label><span>Pet</span></label> 

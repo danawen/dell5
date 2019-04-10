@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import springapp.command.AppointmentCommand;
-import springapp.command.ClientCommand;
 import springapp.domain.Appointment;
 import springapp.domain.Client;
 import springapp.domain.Pet;
@@ -131,8 +131,8 @@ public class AppointmentController {
 	     // we add in a "saved" attribute so we can print a nice message indicating a save was successfull
 		 redirectAttributes.addAttribute("saved", true);
 	     return "redirect:/appointments/"+appointment.getId();		  
-     }
-	 
+     }	 
+	
     /**
      * Deletes a appointment and redirects to appointments page
      * @param id the id of the appointment to delete

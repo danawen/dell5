@@ -33,6 +33,11 @@ public class PetService {
 		return petDao.list();
 		
 	}
+	
+	public List<Pet> getPetsforClient(int clientId){
+		return petDao.listForClient(clientId);
+		
+	}
 
 	public void deletePet(String id) {
 		petDao.delete(Integer.parseInt(id));
