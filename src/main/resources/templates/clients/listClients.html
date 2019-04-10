@@ -12,8 +12,17 @@
              <h1>Clients</h1>
            </div>
 			<div id="content" class="pure-u-1">
-				<div class="pad right">
-					<a class="pure-button primary-cta"  data-th-href="@{'/clients/new'}">New</a>
+			<form th:object="${clients}" th:action"@{/clients}" method="get">
+				<div id="topbar">
+					<div style="padding: 10px;">
+						<input type="text" placeholder="Search Client Name" name="search" class="searchbox" id="search" th:value="${search}"/>
+						<input type="submit" class="submitSearch" value=""/>
+						<input type="submit" class="pure-button primary-cta" value="Clear Search"/>
+					</div>
+				
+					<div id="newclient">
+						<a class="pure-button primary-cta"  data-th-href="@{'/clients/new'}">New</a>
+					</div>
 				</div>
 				<div class="pad">
 				    <div data-th-if="${deleted}" class="message-box-info">
@@ -38,6 +47,7 @@
 						</tbody>
 					</table>
 				</div>
+				</form>
 			</div>
 		</div>
     </div>
