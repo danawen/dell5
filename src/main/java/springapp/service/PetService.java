@@ -52,7 +52,7 @@ public class PetService {
 		return petDao.save(newPet);
 	}
 	
-	public List<Appointment> getAppointments(int petId) {
+	public List<Appointment> getAppointments(Integer petId) {
 		
 		logger.info("pet Id from petservice is "+ petId);
 		return aptDao.listappointmetsforPet(petId);

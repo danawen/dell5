@@ -29,6 +29,10 @@ html, body {
 	padding: 20px;
 }
 
+#home {
+	display: grid;
+}
+
 #loginBox {
     display: grid;
 	align-items: center;
@@ -40,6 +44,52 @@ html, body {
 	padding: 10px;
 	border-radius: 4px;
 	
+}
+
+.banner {
+	width: 100%;
+	min-width: 800px;
+}
+
+.banner-text {
+	position: absolute;
+	top: 20px;
+	left: 1000px;
+	font-weight: bold;
+	color: #2a465e;
+}
+
+.lower-banner {
+	width: banner;
+	max-width: 1187px;
+	height: 300px;
+	display: grid;
+	align-items: center;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-areas: div div div div;
+	font-weight: bold;
+	color: #2a465e;
+	background-color:#f0f4f7;
+}
+
+.lower-banner > img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.lower-banner > div:first-child {
+	height: 100%;
+	width: 110%;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	align-items: center;
+  	font-weight: bold;
+  	color: #f0f4f7;
+	background-color: #2a465e;
+	-webkit-clip-path: polygon(0 0, 100% 0%, 70% 100%, 0% 100%);
+	clip-path: polygon(0 0, 100% 0%, 70% 100%, 0% 100%);
 }
 
 

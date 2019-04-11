@@ -19,7 +19,7 @@
         <div style="padding:12px 0 12px 0; border-bottom: 1px solid #00c4cc;">
           <a class="pure-button secondary-cta" name="date" data-th-href="@{/appointments?date={date}(date=${dates.get('past')})}"><</a>          
           <a class="pure-button secondary-cta" name="date" data-th-href="@{/appointments?date={date}(date=${dates.get('future')})}">></a>
-          <div style="float:right"><a class="pure-button primary-cta" data-th-href="@{/appointments/new}">New</a>
+          <div style="float:right"><a class="pure-button primary-cta" data-th-if="${enableNewAppointment}" data-th-href="@{/appointments/new}">New</a>
           </div>
         </div>
         <div class="columns clearfix">
