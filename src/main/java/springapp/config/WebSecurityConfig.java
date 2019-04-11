@@ -36,9 +36,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
 				// allow pages under the css folder and home page to be accessible to every on
-                .antMatchers("/css/*","/").permitAll()
+            .antMatchers("/css/*","/", "/images/*").permitAll()
 				// but all other pages should only be accessible for logged in users
-				.anyRequest().authenticated()
+				.anyRequest().authenticated()	
             .and()
             // we configure the form login page below
             .formLogin()
