@@ -17,7 +17,7 @@
 					<a class="pure-button"  data-th-if="${fromClientPage}" data-th-href="@{/clients/{c}(c=${command.client.id})}">Cancel</a>
 					<a class="pure-button"  data-th-if="${!fromClientPage}" data-th-href="@{/pets}">Cancel</a>
 					
-					<a class="pure-button" data-th-if="${command.id != null}" data-th-href="@{'/pets/'+${command?.id}+'/delete'}">Delete</a>
+					<a class="pure-button" data-th-if="${command!=null && command.id != null}" data-th-href="@{'/pets/'+${command?.id}+'/delete'}">Delete</a>
 
 				</div>
 				<div class="pad">
@@ -31,13 +31,13 @@
 
 						<div class="pure-control-group">
 				            <label>Client</label>
-				            <span data-th-text="${command.client.name}"> client </span>
+				            <span data-th-if="${command!=null && command.id != null}" data-th-text="${command.client.name}"> client </span>
 				        </div>
 				        
 						<div class="pure-control-group">
 				            <label>Id</label>
-				            <span data-th-if="${command.id == null}"> New </span>
-  				            <span data-th-if="${command.id != null}" data-th-text="*{id}"> New </span>				            
+				            <span data-th-if="${command==null || command.id == null}"> New </span>
+  				            <span data-th-if="${command!=null && command.id != null}" data-th-text="*{id}"> New </span>				            
 				        </div>
 		
 				        <div class="pure-control-group">

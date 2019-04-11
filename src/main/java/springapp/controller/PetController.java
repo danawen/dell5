@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import springapp.command.ClientCommand;
 import springapp.command.PetCommand;
 import springapp.domain.Appointment;
 import springapp.domain.Client;
@@ -87,25 +89,37 @@ public class PetController {
 		model.addAttribute("fromClientPage", clientId != null);
         model.addAttribute("saved", saved);
 
+        List<Client> clientList = clientService.getClients();
+
+		logger.info("total clients : "+clientList.size());
+
 
         // if the id passed in is 'new' and no clientId is passed in, then we have a problem ....
 		if(id.equals("new") && clientId == null) {
-			throw new IllegalArgumentException("Cannot add a new pet without a clientid");
+			model.addAttribute("command",  new PetCommand(0));
+			model.addAttribute("clientList", clientList ); 
+			model.addAttribute("appointments",petService.getAppointments(0) ); 
 		}
+		else
+		{
 
 		PetCommand petCommand;
 
 		if(id.equals("new")) {
+			logger.info("new pet");
             // if the id is 'new' then we create a pet command that only has the client id filled in
             petCommand = new PetCommand(clientId);
 			
 		} else {
+			logger.info("edit pet");
             // else we should get the pet command that is a copy of the pet
             // so we get the pet from the service
             Pet pet = petService.getPet(id);
             // and we generate our command from the pet instance the service returns
 			petCommand = new PetCommand(pet);
 		}
+		
+		logger.info("pet command clientId : "+petCommand.getClientId());
 
 		// the pet command should always have the clientid (unless the Pet instance from the service is missing an id)
         // which we should probably handle....
@@ -113,10 +127,7 @@ public class PetController {
         // we get the client based on the client id in the command
 		Client client = clientService.getClient(petCommand.getClientId());
 		
-		List<Client> clientList = clientService.getClients();
-
-		logger.info("total clients : "+clientList.size());
-
+		
 		// we set the client instance in the pet command,
         // when we got the command earlier, we only had the clientid, but now we should have the full client object.
         // we do this because we want to display the client info (name) not just the id.
@@ -129,6 +140,7 @@ public class PetController {
 		model.addAttribute("command", petCommand);
 		model.addAttribute("clientList", clientList ); 
 		model.addAttribute("appointments",apptmnts ); 
+		}
 		return "pets/editPet";
 	}
 
