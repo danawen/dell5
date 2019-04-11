@@ -21,7 +21,10 @@ public class PetCommand {
 	 * @param clientId the client id
 	 */
 	public PetCommand(Integer clientId) {
+		if(clientId!=0)
+		{
 		this.clientId = clientId;
+		}
 	}
 
 	/**
