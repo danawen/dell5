@@ -6,21 +6,82 @@
 	<div id="container" class="content pure-g" >
 		<header th:replace="fragments/header.html :: header" >
 		</header>
-		<div id="mainBody" class="pure-u pure-g column">
-			<div id="content" class="pure-u-1">
-				<div class="pad">
-					Welcome to the spring app tutorial.
-					<br>
-					From this app, you should be able to:
-					<ul>
-						<li> Add client and edit their info </li>
-						<li> Add pets for a client </li>
-						<li> Update a client's or a pet's info</li>
-					</ul>
-									
+		<div id="home" class="pure-u pure-g">
+			<div id="content" class="pure-u-1" sec:authorize="isAuthenticated()">
+				<div class="banner">
+					<img class= "pure-img" src="/images/photo_header.png" alt="Banner">
+					<div class="banner-text">
+						<h1>Caring for your</h1>
+						<h1>Furry Friends</h1>
+						<h4>Spot On Pet Spa</h4>
+						<h4>Serving the Austin Area</h4>
+					</div>								
+				</div>
+				<div class="lower-banner">
+					<div>
+						<p class="pad margin">
+							Welcome! Please choose from the options to the left.
+						</p>
+					</div>
+					<div>
+						<img class= "pure-img" src="/images/pet paw.png" alt="Petpaw">
+						<p>
+							Add Clients and Pets
+						</p>
+					</div>
+					<div>
+						<img class= "pure-img" src="/images/calendar.png" alt="Calendar">
+						<p>
+							Book Appointments
+						</p>
+					</div>
+					<div>
+						<img class= "pure-img" src="/images/edit.png" alt="Edit">
+						<p>
+							Update Accounts
+						</p>
+					</div>
+				</div>
+			</div>
+			<div id="content" class="pure-u-1" sec:authorize="isAnonymous()">
+				<div class="banner">
+					<img class= "pure-img" src="/images/photo_header.png" alt="Banner">
+					<div class="banner-text">
+						<h1>Caring for your</h1>
+						<h1>Furry Friends</h1>
+						<h4>Spot On Pet Spa</h4>
+						<h4>Serving the Austin Area</h4>
+					</div>								
+				</div>
+				<div class="lower-banner">
+					<div>
+						<p class="pad margin">
+							In order to access all of the available features of the web portal, you will need to sign in.
+						</p>
+					</div>
+					<div>
+						<img class= "pure-img" src="/images/pet paw.png" alt="Petpaw">
+						<p>
+							Add Clients and Pets
+						</p>
+					</div>
+					<div>
+						<img class= "pure-img" src="/images/calendar.png" alt="Calendar">
+						<p>
+							Book Appointments
+						</p>
+					</div>
+					<div>
+						<img class= "pure-img" src="/images/edit.png" alt="Edit">
+						<p>
+							Update Accounts
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
+		<footer th:replace="fragments/footer.html :: footer" >
+		</footer>
     </div>
 </body>
 </html>
