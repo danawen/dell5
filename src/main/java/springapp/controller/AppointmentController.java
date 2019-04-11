@@ -64,12 +64,14 @@ public class AppointmentController {
 			 model.addAttribute("TodayAppointments",appoinments);			 
 			 model.addAttribute("currentDate",appointmentService.getFormattedDate(date));			
 			 model.addAttribute("dates",appointmentService.getPastCurrentFutureDate(date));
+			 model.addAttribute("enableNewAppointment", appointmentService.IsEnableNewAppointment(date));
 		 }
 		 else {			 
 			 Map<String,Appointment> todaysAppointments = appointmentService.getTodayAppointments();		
 			 model.addAttribute("TodayAppointments",todaysAppointments);						 
 			 model.addAttribute("currentDate",appointmentService.getFormattedDate(currentDate));
 			 model.addAttribute("dates",appointmentService.getPastCurrentFutureDate(currentDate));
+			 model.addAttribute("enableNewAppointment", appointmentService.IsEnableNewAppointment(currentDate));
 		 }		
 		
         return "appointments/listAppointments";
@@ -95,8 +97,10 @@ public class AppointmentController {
 			 model.addAttribute("availableTime",time);			 
 			 
 		    if(id.equals("new")) {
+		    	
 		        // create an empty command object to merge with the view template
-				model.addAttribute("command", new AppointmentCommand(null));	
+				model.addAttribute("command", new AppointmentCommand(null));
+				
 			} else {
 		        // since we have a valid id, get the client object from the service
 				Appointment appointment = appointmentService.getAppointment(id);				
