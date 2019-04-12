@@ -42,12 +42,12 @@
 		
 				        <div class="pure-control-group">
 				            <label for="name">Name</label>
-				            <input id="name" name="name" type="text" data-th-field="*{name}">
+				            <input id="name" name="name" type="text" data-th-field="*{name}" required>
 				        </div>
 
 				        <div class="pure-control-group">
 				            <label>Gender</label>
-							<select data-th-field="*{gender}">
+							<select data-th-field="*{gender}" required>
 							    <option data-th-value="''"></option>
 							    <option data-th-value="'Female'" data-th-text="Female"></option>
 							    <option data-th-value="'Male'" data-th-text="Male"></option>

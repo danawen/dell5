@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import springapp.command.AppointmentCommand;
 import springapp.domain.Appointment;
@@ -112,6 +113,16 @@ public class AppointmentController {
 			}
 			return "appointments/editAppointment";
 		}
+		 
+		 @PostMapping("/getClientpetvalues")
+		 public @ResponseBody
+		 List<Pet> getClientpetvalues(@RequestParam("clientId") Integer clientId) {
+			 
+			 logger.info("client Id is " + clientId );
+			 List<Pet> pets = petService.getPetsforClient(clientId);
+
+		     return pets;  
+		 }
 
 	 /**
      * Saves the updates to a client based on the command that was sent from the client side

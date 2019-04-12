@@ -33,7 +33,7 @@
 				        </div>
 		                <div class="pure-control-group group-style">
 							<label><span>Client</span></label> 
-								<select name= "clientId" data-th-field="*{clientId}" class="input-select">
+								<select id="clientId" name="clientId" data-th-field="*{clientId}" class="input-select">
 									<option data-th-each="client : ${clients}" data-th-value="${client.id}" data-th-text="${client.name}">
 									</option>
 								</select>								
@@ -47,18 +47,18 @@
 						</div>	
 						<div class="pure-control-group group-style">
 				            <label for="title"><span>Title </span></label>
-				            <input id="title" name="title" class="input-field" value="" type="text" data-th-field="*{title}">
+				            <input id="title" name="title" class="input-field" value="" type="text" data-th-field="*{title}" required>
 				        </div>
 				        
 				        <div class="pure-control-group group-style">
 				            <label for="time"><span>Date </span></label>
-				            <input id="date" class="input-field" name="date" type="date" data-th-field="*{date}">
+				            <input id="date" class="input-field" name="date" type="date" data-th-field="*{date}" required>
 				        </div>
 				        
 				        <div class="pure-control-group group-style">
 							<label><span>Time</span></label> 
 							<select name = "time" data-th-field="*{time}" class="input-field">
-								<option data-th-each="time : ${availableTime}" data-th-value="${time}" data-th-text="${time}">
+								<option data-th-each="time : ${availableTime}" data-th-value="${time}" data-th-text="${time}" required>
 							    </option>
 							</select>
 						</div>		
@@ -84,5 +84,13 @@
 	</div>
 	</div>
 	</div>
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js">
+  $("#clientId").change(function () {
+            alert($("#clientId").val());
+        });
+
+</script>
+	
 </body>
 </html>

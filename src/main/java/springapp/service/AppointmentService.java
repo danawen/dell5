@@ -44,6 +44,7 @@ public class AppointmentService {
 	}
 	
 	
+	
 	public List<LocalTime> geTime(){
 		List<LocalTime> defaultTimeList = new ArrayList<>();
 		for(String time : appointmentDao.GetDefaultTimeList()) {
