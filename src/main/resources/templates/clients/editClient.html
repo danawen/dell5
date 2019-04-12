@@ -32,22 +32,22 @@
 		
 				        <div class="pure-control-group group-style">
 				            <label for="name"><span>Name</span></label>
-				            <input id="name" class="input-field" name="name" value="" type="text" data-th-field="*{name}">
+				            <input id="name" class="input-field" name="name" value="" type="text" data-th-field="*{name}" required>
 				        </div>
 
 				        <div class="pure-control-group group-style">
 				            <label for="phone"><span>Phone</span></label>
-				            <input id="phone" name="phone" class="phone-field" value="" maxlength="12" type="text" data-th-field="*{phoneNumber}">
+				            <input id="phone" name="phone" class="phone-field" value="" maxlength="12" type="text" data-th-field="*{phoneNumber}" required>
 				        </div>
 						
 						 <div class="pure-control-group group-style">
 				            <label for="email"><span>Email</span></label>
-				            <input id="email" name="email" class="input-field" type="text" data-th-field="*{email}">
+				            <input id="email" name="email" class="input-field" type="text" data-th-field="*{email}" required>
 				        </div>
 						
 				        <div class="pure-control-group group-style">
 				            <label for="address"><span>Address</span></label>
-				            <textarea id="address" class="input-area" name="address" type="text" data-th-field="*{address}">
+				            <textarea id="address" class="input-area" name="address" type="text" data-th-field="*{address}" required>
 				            </textarea>
 				        </div>
 				        <div class="pure-control-group" data-th-if="${command.id != null}">
