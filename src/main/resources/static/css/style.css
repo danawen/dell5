@@ -46,57 +46,9 @@ html, body {
 	
 }
 
-.banner {
-	width: 100%;
-	min-width: 800px;
-}
-
-.banner-text {
-	position: absolute;
-	top: 20px;
-	left: 1000px;
-	font-weight: bold;
-	color: #2a465e;
-}
-
-.lower-banner {
-	width: banner;
-	max-width: 1187px;
-	height: 300px;
-	display: grid;
-	align-items: center;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-areas: div div div div;
-	font-weight: bold;
-	color: #2a465e;
-	background-color:#f0f4f7;
-}
-
-.lower-banner > img {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.lower-banner > div:first-child {
-	height: 100%;
-	width: 110%;
-	position: relative;
-	display: inline-block;
-	overflow: hidden;
-	align-items: center;
-  	font-weight: bold;
-  	color: #f0f4f7;
-	background-color: #2a465e;
-	-webkit-clip-path: polygon(0 0, 100% 0%, 70% 100%, 0% 100%);
-	clip-path: polygon(0 0, 100% 0%, 70% 100%, 0% 100%);
-}
-
-
 .fullWidth {
 	width: 100%;
 }
-
 
 .pad {
 	padding: 10px;
@@ -287,58 +239,126 @@ input.pure-button.primary-cta {
 }
 
 #topbar > div:first-child > input:last-child:hover {
-    background-color: #336a9c;
-    border: 1px solid #336a9c;
+	background-color: #336a9c;
+	border: 1px solid #336a9c;
 }
 
-	.searchbox {
-        border: none;
-        padding: 0 30px 0 10px;
-        border: 1px solid #eaeaea;
-        outline: none;
-        height: 40px;
-        width: 250px;
-        margin: 0px;
-    }
+.searchbox {
+	border: none;
+	padding: 0 30px 0 10px;
+	border: 1px solid #eaeaea;
+	outline: none;
+	height: 40px;
+	width: 250px;
+	margin: 0px;
+}
 
-    .searchbox:hover {
-        border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
-    }
+.searchbox:hover {
+     border-color: #a0a0a0 #b9b9b9 #b9b9b9 #b9b9b9;
+}
 
-    .searchbox:focus {
-        border-color: #4d90fe;
-    }
+.searchbox:focus {
+     border-color: #4d90fe;
+}
 
-    .submitSearch {
-        border-radius: 4px;
-        background-image: url('../images/if_magnifying-glass_226571.png');
-        background-repeat: no-repeat;
-        background-origin: content-box;
-        background-position-x: center;
-        background-position-y: center;
-        background-size: contain;
-        background-color: #1b3852;
-        border: 1px solid #1b3852;
-        cursor: pointer;
-        padding: 0.5em 1em;
-    	border-radius: 5px;		
-        font-size: 14px;
-        font-weight: bold;
-        width: 84px;
-        height: 37px;
-        padding: 8px 16px;
-    }
+.submitSearch {
+	border-radius: 4px;
+	background-image: url('../images/if_magnifying-glass_226571.png');
+	background-repeat: no-repeat;
+	background-origin: content-box;
+	background-position-x: center;
+	background-position-y: center;
+	background-size: contain;
+	background-color: #1b3852;
+	border: 1px solid #1b3852;
+	cursor: pointer;
+	padding: 0.5em 1em;
+	border-radius: 5px;		
+	font-size: 14px;
+	font-weight: bold;
+	width: 84px;
+	height: 37px;
+	padding: 8px 16px;
+}
 
-    .submitSearch:hover {
-        box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-        background-image: url('../images/if_magnifying-glass_226571.png');
-        background-repeat: no-repeat;
-        background-origin: content-box;
-        background-position-x: center;
-        background-position-y: center;
-        background-size: contain;
-        border: 1px solid #c6c6c6;
-        box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-        background-color: #336a9c;
-        padding: 8px 16px;
-    }
+.submitSearch:hover {
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	background-image: url('../images/if_magnifying-glass_226571.png');
+	background-repeat: no-repeat;
+	background-origin: content-box;
+	background-position-x: center;
+	background-position-y: center;
+	background-size: contain;
+	border: 1px solid #c6c6c6;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	background-color: #336a9c;
+	padding: 8px 16px;
+}
+
+.mainbanner {
+    position: relative;
+    width: 1187px;
+}
+
+.bannertext {
+	position: absolute;
+	text-align: center;
+	top: 10%;
+	right: 10%;
+	color: #2a465e;
+}
+
+.bannertext h1 {
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 3em;
+	line-height: 50px;	
+}
+
+.lowerbanner {
+	width: 100%;
+	max-width: 1187px;
+	height: 300px;
+	display: grid;
+	align-items: center;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-areas: div div div div;
+	background-color:#f4f5f9;	
+}
+
+.feature {
+	display: block;
+	position: relative;
+	text-align: center;
+}
+
+.featureText {
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	position: relative;
+	color: #2a465e;
+}
+
+.feature h4 {
+	position: absolute;
+	text-align: center;
+	top: -80px;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	color: #2a465e;
+}
+
+.lowerbanner > div:first-child {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	align-items: center;
+  	color: #f0f4f7;
+	background-color: #2a465e;
+	-webkit-clip-path: polygon(0 0, 100% 0%, 70% 100%, 0% 100%);
+	clip-path: polygon(0 0, 100% 0%, 70% 100%, 0% 100%);
+}

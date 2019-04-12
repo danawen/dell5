@@ -8,75 +8,66 @@
 		</header>
 		<div id="home" class="pure-u pure-g">
 			<div id="content" class="pure-u-1" sec:authorize="isAuthenticated()">
-				<div class="banner">
+				<div class="mainbanner">
 					<img class= "pure-img" src="/images/photo_header.png" alt="Banner">
-					<div class="banner-text">
-						<h1>Caring for your</h1>
-						<h1>Furry Friends</h1>
-						<h4>Spot On Pet Spa</h4>
-						<h4>Serving the Austin Area</h4>
+					<div class="bannertext">
+						<h1>Caring for your<br>Furry Friends</h1>
+						<h2>Spot On Pet Spa</h2>
+						<h4>Serving the Austin area</h4>
+						<a class="pure-button primary-cta"  data-th-href="@{'/logout'}">Sign Out</a>
 					</div>								
 				</div>
-				<div class="lower-banner">
+				<div class="lowerbanner">
 					<div>
-						<p class="pad margin">
-							Welcome! Please choose from the options to the left.
-						</p>
+						<p class="pad margin">Welcome to Spot On Pet Spa!</p>
+						<p class="pad margin">Please choose an option:</p>
 					</div>
-					<div>
-						<img class= "pure-img" src="/images/pet paw.png" alt="Petpaw">
-						<p>
-							Add Clients and Pets
-						</p>
+					<div class="feature">
+						<img src="/images/edit.png" alt="Client">
+						<a href="#" data-th-href="@{'/clients'}" class="featureText">All clients</a>
+						<a href="#" data-th-href="@{'/clients/new'}" class="featureText">Add a client</a>
 					</div>
-					<div>
-						<img class= "pure-img" src="/images/calendar.png" alt="Calendar">
-						<p>
-							Book Appointments
-						</p>
+					<div class="feature">
+						<img src="/images/pet paw.png" alt="Paw">
+						<a href="#" data-th-href="@{'/pets'}" class="featureText">All patients</a>
+						<a href="#" data-th-href="@{'/pets/new'}" class="featureText">Add a patient</a>
 					</div>
-					<div>
-						<img class= "pure-img" src="/images/edit.png" alt="Edit">
-						<p>
-							Update Accounts
-						</p>
+					<div class="feature">
+						<img src="/images/calendar.png" alt="Calendar">
+						<a href = "#" data-th-href="@{'/appointments'}" class="featureText">Appointments for today</a>
+						<a href = "#" data-th-href="@{'/appointments/new'}" class="featureText">Book Appointment</a>
 					</div>
 				</div>
 			</div>
 			<div id="content" class="pure-u-1" sec:authorize="isAnonymous()">
-				<div class="banner">
-					<img class= "pure-img" src="/images/photo_header.png" alt="Banner">
-					<div class="banner-text">
-						<h1>Caring for your</h1>
-						<h1>Furry Friends</h1>
-						<h4>Spot On Pet Spa</h4>
-						<h4>Serving the Austin Area</h4>
+				<div class="mainbanner">
+					<img class="pure-img" src="/images/photo_header.png" alt="Banner">
+					<div class="bannertext">					
+						<h1>Caring for your<br>Furry Friends</h1>
+						<h2>Spot On Pet Spa</h2>
+						<h4>Serving the Austin area</h4>
+						<a class="pure-button primary-cta"  data-th-href="@{'/login'}">Sign In</a>			        						
 					</div>								
 				</div>
-				<div class="lower-banner">
+				<div class="lowerbanner">
 					<div>
 						<p class="pad margin">
-							In order to access all of the available features of the web portal, you will need to sign in.
+							Welcome to Spot On Pet Spa! 
 						</p>
 					</div>
-					<div>
-						<img class= "pure-img" src="/images/pet paw.png" alt="Petpaw">
-						<p>
-							Add Clients and Pets
-						</p>
+					<div class="feature">
+						<img src="/images/edit.png" alt="Client">
+						<p>Manage Clients</p>
 					</div>
-					<div>
-						<img class= "pure-img" src="/images/calendar.png" alt="Calendar">
-						<p>
-							Book Appointments
-						</p>
+					<div class="feature">
+						<h4>Sign in to access all of these features!</h4>
+						<img src="/images/pet paw.png" alt="Paw">
+						<p>Manage Patients</p>
 					</div>
-					<div>
-						<img class= "pure-img" src="/images/edit.png" alt="Edit">
-						<p>
-							Update Accounts
-						</p>
-					</div>
+					<div class="feature">
+						<img src="/images/calendar.png" alt="Calendar">
+						<p>Manage Appointments</p>
+					</div>					
 				</div>
 			</div>
 		</div>
