@@ -57,4 +57,8 @@ public class PetService {
 		logger.info("pet Id from petservice is "+ petId);
 		return aptDao.listappointmetsforPet(petId);
 	}
+
+	public List<Pet> searchPets(String search) {
+		return petDao.get(search);
+	}
 }
