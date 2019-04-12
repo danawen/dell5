@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<header th:replace="fragments/head.html :: head" >
+</header>
+<body>
+	<div id="container" class="content pure-g" >
+		<header th:replace="fragments/header.html :: header" >
+		</header>
+		<div id="mainBody" class="pure-u pure-g column">
+		<div class="card">
+           <div class="title">
+             <h1>Appointments by List</h1>
+           </div>
+			<div id="content" class="pure-u-1">
+			<form th:object="${appointments}" th:action="@{/listedAppointments}" method="get">
+				<div id="topbar">
+					<div style="padding: 10px;">
+						<input type="text" placeholder="Search Appointment by Name" name="search" class="searchbox" id="search" th:value="${search}"/>
+						<input type="submit" class="submitSearch" value=""/>
+						<input type="submit" class="pure-button primary-cta" value="Clear Search"/>
+					</div>
+				
+					<div id="newAppointment">
+						<a class="pure-button primary-cta"  data-th-href="@{'/appointments/new'}">New</a>
+					</div>
+				</div>
+				<div class="pad">
+				    <div data-th-if="${deleted}" class="message-box-info">
+						Deleted successfully
+				    </div>
+					<table class="fullWidth pure-table pure-table-horizontal roster-table">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Title</th>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Client</th>
+								<th>Pet</th>
+								<th>Notes</th>
+							</tr>
+						</thead>
+						<tbody>	
+							<tr data-th-each="appt : ${appointments}">
+								<td> <a data-th-href="@{/appointments/{id}(id=${appt.id})}" data-th-text="${appt.id}">...</a></td>
+								<td data-th-text="${appt.id}">...</td>
+								<td data-th-text="${appt.tilte}">...</td>
+								<td data-th-text="${appt.date}">...</td>
+								<td data-th-text="${appt.time}">...</td>
+								<td data-th-text="${appt.client}">...</td>
+								<td data-th-text="${appt.pet}">...</td>
+								<td data-th-text="${appt.notes}">...</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				</form>
+			</div>
+		</div>
+    </div>
+  </div>
+</body>
+</html>
+
+
