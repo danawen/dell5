@@ -17,6 +17,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import springapp.domain.Client;
 import springapp.domain.Gender;
 import springapp.domain.Pet;
 
@@ -60,6 +61,18 @@ public class PetDao {
 		
 		
 		return queryResult;
+	}
+	
+	public List<Pet> get(String name) {
+		List<Pet> queryResult = jdbcTemplate.query("SELECT id, name, gender, altered, client_id FROM pets WHERE name like ?", 
+				new Object[] {name},
+				simplePetMapper);
+		if(queryResult.isEmpty()) {
+			return null;
+		}
+		
+		return queryResult;
+		
 	}
 	
 	public Pet get(int id) {

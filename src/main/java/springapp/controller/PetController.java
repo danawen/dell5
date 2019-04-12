@@ -55,10 +55,15 @@ public class PetController {
      */
 	@PreAuthorize("hasAuthority('LIST_PETS')")
 	@GetMapping
-	 public String listPets(Model model) {
+	 public String listPets(@RequestParam (value = "search", required=false) String search, Model model) {
 	    // get the list of pets from the service
-        List<Pet> pets = petService.getPets();
-
+        List<Pet> pets;
+        
+        if(search==null || search.equals("")) {
+		      pets = petService.getPets();
+		 }  else {
+			 pets = petService.searchPets(search);
+		 }
         // we add the pets to the model
         // Note we are not adding the PetCommand instances, but Pet instances
 		model.addAttribute("pets", pets);
